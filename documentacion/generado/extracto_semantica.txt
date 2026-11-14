@@ -1,0 +1,25 @@
+  84  REGLAS_SEMANTICAS = {
+  85      1: lambda h: Programa([h[0]] + h[1][::-1]),                    # Programa → Regla Resto
+  86      2: lambda h: _agregar(h[1], h[0]),                             # Resto → Regla Resto
+  87      3: lambda h: [],                                               # Resto → ε
+  88      4: lambda h: Regla(h[1], h[3], _linea(h[0])),                  # Regla → WHEN Condicion THEN Acciones ;
+  89      5: lambda h: _plegar('OR', h[0], h[1]),                        # Condicion → Conjuncion ColaOr
+  90      6: lambda h: _agregar(h[2], h[1]),                             # ColaOr → OR Conjuncion ColaOr
+  91      7: lambda h: [],                                               # ColaOr → ε
+  92      8: lambda h: _plegar('AND', h[0], h[1]),                       # Conjuncion → Factor ColaAnd
+  93      9: lambda h: _agregar(h[2], h[1]),                             # ColaAnd → AND Factor ColaAnd
+  94      10: lambda h: [],                                              # ColaAnd → ε
+  95      11: lambda h: Negacion(h[1]),                                  # Factor → NOT Factor
+  96      12: lambda h: h[1],                                            # Factor → ( Condicion )
+  97      13: lambda h: h[0],                                            # Factor → Comparacion
+  98      14: lambda h: Comparacion(h[0].lexema, h[1].lexema, h[2]),     # Comparacion → ID OP_REL Valor
+  99      15: lambda h: int(h[0].lexema),                                # Valor → NUM
+ 100      16: lambda h: True,                                            # Valor → TRUE
+ 101      17: lambda h: False,                                           # Valor → FALSE
+ 102      18: lambda h: [h[0]] + h[1][::-1],                             # Acciones → Accion ColaAcciones
+ 103      19: lambda h: _agregar(h[2], h[1]),                            # ColaAcciones → AND Accion ColaAcciones
+ 104      20: lambda h: [],                                              # ColaAcciones → ε
+ 105      21: lambda h: Accion(h[0].lexema, h[1].lexema, h[2]),          # Accion → ID ID Duracion
+ 106      22: lambda h: int(h[1].lexema),                                # Duracion → DURING NUM
+ 107      23: lambda h: None,                                            # Duracion → ε
+ 108  }

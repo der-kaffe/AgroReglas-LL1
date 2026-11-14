@@ -1,0 +1,22 @@
+Entrada: WHEN humedad < 30 AND NOT lluvia == TRUE THEN regar sector_sur DURING 15;
+
+Programa
+⇒ Regla Resto   [1]
+⇒ WHEN Condicion THEN Acciones PUNTO_COMA Resto   [4]
+⇒ WHEN Conjuncion ColaOr THEN Acciones PUNTO_COMA Resto   [5]
+⇒ WHEN Factor ColaAnd ColaOr THEN Acciones PUNTO_COMA Resto   [8]
+⇒ WHEN Comparacion ColaAnd ColaOr THEN Acciones PUNTO_COMA Resto   [13]
+⇒ WHEN ID OP_REL Valor ColaAnd ColaOr THEN Acciones PUNTO_COMA Resto   [14]
+⇒ WHEN ID OP_REL NUM ColaAnd ColaOr THEN Acciones PUNTO_COMA Resto   [15]
+⇒ WHEN ID OP_REL NUM AND Factor ColaAnd ColaOr THEN Acciones PUNTO_COMA Resto   [9]
+⇒ WHEN ID OP_REL NUM AND NOT Factor ColaAnd ColaOr THEN Acciones PUNTO_COMA Resto   [11]
+⇒ WHEN ID OP_REL NUM AND NOT Comparacion ColaAnd ColaOr THEN Acciones PUNTO_COMA Resto   [13]
+⇒ WHEN ID OP_REL NUM AND NOT ID OP_REL Valor ColaAnd ColaOr THEN Acciones PUNTO_COMA Resto   [14]
+⇒ WHEN ID OP_REL NUM AND NOT ID OP_REL TRUE ColaAnd ColaOr THEN Acciones PUNTO_COMA Resto   [16]
+⇒ WHEN ID OP_REL NUM AND NOT ID OP_REL TRUE ColaOr THEN Acciones PUNTO_COMA Resto   [10]
+⇒ WHEN ID OP_REL NUM AND NOT ID OP_REL TRUE THEN Acciones PUNTO_COMA Resto   [7]
+⇒ WHEN ID OP_REL NUM AND NOT ID OP_REL TRUE THEN Accion ColaAcciones PUNTO_COMA Resto   [18]
+⇒ WHEN ID OP_REL NUM AND NOT ID OP_REL TRUE THEN ID ID Duracion ColaAcciones PUNTO_COMA Resto   [21]
+⇒ WHEN ID OP_REL NUM AND NOT ID OP_REL TRUE THEN ID ID DURING NUM ColaAcciones PUNTO_COMA Resto   [22]
+⇒ WHEN ID OP_REL NUM AND NOT ID OP_REL TRUE THEN ID ID DURING NUM PUNTO_COMA Resto   [20]
+⇒ WHEN ID OP_REL NUM AND NOT ID OP_REL TRUE THEN ID ID DURING NUM PUNTO_COMA   [3]

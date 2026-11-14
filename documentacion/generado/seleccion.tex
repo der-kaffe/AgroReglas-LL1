@@ -1,0 +1,37 @@
+Programa & (1) Programa $\rightarrow$ \texttt{Regla \allowbreak{}Resto} & \{\texttt{WHEN}\} & --- \\
+\hline
+Resto & (2) Resto $\rightarrow$ \texttt{Regla \allowbreak{}Resto} & \{\texttt{WHEN}\} & sí \\
+ & (3) Resto $\rightarrow$ $\varepsilon$ & \{\texttt{EOF}\} &  \\
+\hline
+Regla & (4) Regla $\rightarrow$ \texttt{WHEN \allowbreak{}Condicion \allowbreak{}THEN \allowbreak{}Acciones \allowbreak{}PUNTO\_\allowbreak{}COMA} & \{\texttt{WHEN}\} & --- \\
+\hline
+Condicion & (5) Condicion $\rightarrow$ \texttt{Conjuncion \allowbreak{}ColaOr} & \{\texttt{ID}, \texttt{NOT}, \texttt{PARENT\_\allowbreak{}IZQ}\} & --- \\
+\hline
+ColaOr & (6) ColaOr $\rightarrow$ \texttt{OR \allowbreak{}Conjuncion \allowbreak{}ColaOr} & \{\texttt{OR}\} & sí \\
+ & (7) ColaOr $\rightarrow$ $\varepsilon$ & \{\texttt{THEN}, \texttt{PARENT\_\allowbreak{}DER}\} &  \\
+\hline
+Conjuncion & (8) Conjuncion $\rightarrow$ \texttt{Factor \allowbreak{}ColaAnd} & \{\texttt{ID}, \texttt{NOT}, \texttt{PARENT\_\allowbreak{}IZQ}\} & --- \\
+\hline
+ColaAnd & (9) ColaAnd $\rightarrow$ \texttt{AND \allowbreak{}Factor \allowbreak{}ColaAnd} & \{\texttt{AND}\} & sí \\
+ & (10) ColaAnd $\rightarrow$ $\varepsilon$ & \{\texttt{THEN}, \texttt{OR}, \texttt{PARENT\_\allowbreak{}DER}\} &  \\
+\hline
+Factor & (11) Factor $\rightarrow$ \texttt{NOT \allowbreak{}Factor} & \{\texttt{NOT}\} & sí \\
+ & (12) Factor $\rightarrow$ \texttt{PARENT\_\allowbreak{}IZQ \allowbreak{}Condicion \allowbreak{}PARENT\_\allowbreak{}DER} & \{\texttt{PARENT\_\allowbreak{}IZQ}\} &  \\
+ & (13) Factor $\rightarrow$ \texttt{Comparacion} & \{\texttt{ID}\} &  \\
+\hline
+Comparacion & (14) Comparacion $\rightarrow$ \texttt{ID \allowbreak{}OP\_\allowbreak{}REL \allowbreak{}Valor} & \{\texttt{ID}\} & --- \\
+\hline
+Valor & (15) Valor $\rightarrow$ \texttt{NUM} & \{\texttt{NUM}\} & sí \\
+ & (16) Valor $\rightarrow$ \texttt{TRUE} & \{\texttt{TRUE}\} &  \\
+ & (17) Valor $\rightarrow$ \texttt{FALSE} & \{\texttt{FALSE}\} &  \\
+\hline
+Acciones & (18) Acciones $\rightarrow$ \texttt{Accion \allowbreak{}ColaAcciones} & \{\texttt{ID}\} & --- \\
+\hline
+ColaAcciones & (19) ColaAcciones $\rightarrow$ \texttt{AND \allowbreak{}Accion \allowbreak{}ColaAcciones} & \{\texttt{AND}\} & sí \\
+ & (20) ColaAcciones $\rightarrow$ $\varepsilon$ & \{\texttt{PUNTO\_\allowbreak{}COMA}\} &  \\
+\hline
+Accion & (21) Accion $\rightarrow$ \texttt{ID \allowbreak{}ID \allowbreak{}Duracion} & \{\texttt{ID}\} & --- \\
+\hline
+Duracion & (22) Duracion $\rightarrow$ \texttt{DURING \allowbreak{}NUM} & \{\texttt{DURING}\} & sí \\
+ & (23) Duracion $\rightarrow$ $\varepsilon$ & \{\texttt{AND}, \texttt{PUNTO\_\allowbreak{}COMA}\} &  \\
+\hline

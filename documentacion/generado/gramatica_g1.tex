@@ -1,0 +1,18 @@
+1 & Programa $\rightarrow$ \texttt{Regla \allowbreak{}Programa} \\
+2 & Programa $\rightarrow$ \texttt{Regla} \\
+3 & Regla $\rightarrow$ \texttt{WHEN \allowbreak{}Condicion \allowbreak{}THEN \allowbreak{}Acciones \allowbreak{}PUNTO\_\allowbreak{}COMA} \\
+4 & Condicion $\rightarrow$ \texttt{Condicion \allowbreak{}OR \allowbreak{}Conjuncion} \\
+5 & Condicion $\rightarrow$ \texttt{Conjuncion} \\
+6 & Conjuncion $\rightarrow$ \texttt{Conjuncion \allowbreak{}AND \allowbreak{}Factor} \\
+7 & Conjuncion $\rightarrow$ \texttt{Factor} \\
+8 & Factor $\rightarrow$ \texttt{NOT \allowbreak{}Factor} \\
+9 & Factor $\rightarrow$ \texttt{PARENT\_\allowbreak{}IZQ \allowbreak{}Condicion \allowbreak{}PARENT\_\allowbreak{}DER} \\
+10 & Factor $\rightarrow$ \texttt{Comparacion} \\
+11 & Comparacion $\rightarrow$ \texttt{ID \allowbreak{}OP\_\allowbreak{}REL \allowbreak{}Valor} \\
+12 & Valor $\rightarrow$ \texttt{NUM} \\
+13 & Valor $\rightarrow$ \texttt{TRUE} \\
+14 & Valor $\rightarrow$ \texttt{FALSE} \\
+15 & Acciones $\rightarrow$ \texttt{Acciones \allowbreak{}AND \allowbreak{}Accion} \\
+16 & Acciones $\rightarrow$ \texttt{Accion} \\
+17 & Accion $\rightarrow$ \texttt{ID \allowbreak{}ID} \\
+18 & Accion $\rightarrow$ \texttt{ID \allowbreak{}ID \allowbreak{}DURING \allowbreak{}NUM} \\

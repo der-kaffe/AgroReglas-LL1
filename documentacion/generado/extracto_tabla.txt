@@ -1,0 +1,27 @@
+  82  def conjunto_seleccion(p, first, follow, g):
+  83      inicio = first_secuencia(p.derecha, first, g)
+  84      seleccion = inicio - {EPS}
+  85      if EPS in inicio:
+  86          seleccion |= follow[p.izquierda]
+  87      return seleccion
+  88  
+  89  
+  90  @dataclass(frozen=True)
+  91  class Conflicto:
+  92      no_terminal: str
+  93      terminal: str
+  94      producciones: tuple  # números de las producciones que compiten por la celda
+  95  
+  96  
+  97  def construir_tabla(g, seleccion):
+  98      """Tabla dispersa {(A, a): Produccion} y lista de conflictos."""
+  99      celdas = defaultdict(list)
+ 100      for p in g.producciones:
+ 101          for terminal in seleccion[p.numero]:
+ 102              celdas[p.izquierda, terminal].append(p)
+ 103      orden = {s: i for i, s in enumerate(g.no_terminales + g.terminales + [EOF])}
+ 104      conflictos = [Conflicto(a, t, tuple(q.numero for q in ps))
+ 105                    for (a, t), ps in celdas.items() if len(ps) > 1]
+ 106      conflictos.sort(key=lambda c: (orden[c.no_terminal], orden[c.terminal]))
+ 107      tabla = {clave: ps[0] for clave, ps in celdas.items()}
+ 108      return tabla, conflictos

@@ -1,0 +1,31 @@
+$ python3 -m agroreglas ejemplos/riego.agro --ast
+ACEPTADA: ejemplos/riego.agro es sintácticamente válida (2 reglas, 3 acciones, 34 tokens).
+
+Árbol de sintaxis abstracta (AST):
+Programa (2 reglas)
+├── Regla (línea 1)
+│   ├── Condición
+│   │   └── AND
+│   │       ├── humedad < 30
+│   │       └── NOT
+│   │           └── OR
+│   │               ├── lluvia == TRUE
+│   │               └── viento > 40
+│   └── Acciones
+│       ├── Acción
+│       │   ├── verbo: regar
+│       │   ├── objetivo: sector_norte
+│       │   └── DURING: 15 min
+│       └── Acción
+│           ├── verbo: activar
+│           └── objetivo: alarma
+└── Regla (línea 2)
+    ├── Condición
+    │   └── temperatura >= 35
+    └── Acciones
+        └── Acción
+            ├── verbo: abrir
+            ├── objetivo: valvula
+            └── DURING: 5 min
+$ echo $?
+0

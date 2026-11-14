@@ -1,0 +1,9 @@
+$ python3 -m agroreglas ejemplos/invalidos/03_parentesis_sin_cerrar.agro
+RECHAZADA: ejemplos/invalidos/03_parentesis_sin_cerrar.agro
+Error sintáctico en línea 2, columna 1 (posición 38): se esperaba AND, OR o ')' después de FALSE, pero se encontró la palabra reservada THEN. El '(' abierto en línea 1, columna 6 sigue sin cerrar.
+  Esperados: AND, OR, PARENT_DER
+  Cima de la pila: ColaAnd
+   2 | THEN regar sector_sur;
+     | ^^^^
+$ echo $?
+1

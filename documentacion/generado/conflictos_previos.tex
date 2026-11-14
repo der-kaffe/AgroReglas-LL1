@@ -1,0 +1,15 @@
+G0 (inicial) & Programa & \texttt{WHEN} & (1) Programa $\rightarrow$ \texttt{Regla \allowbreak{}Programa}; (2) Programa $\rightarrow$ \texttt{Regla} \\
+G0 (inicial) & Condicion & \texttt{ID} & (4) Condicion $\rightarrow$ \texttt{Condicion \allowbreak{}OR \allowbreak{}Condicion}; (5) Condicion $\rightarrow$ \texttt{Condicion \allowbreak{}AND \allowbreak{}Condicion}; (8) Condicion $\rightarrow$ \texttt{Comparacion} \\
+G0 (inicial) & Condicion & \texttt{NOT} & (4) Condicion $\rightarrow$ \texttt{Condicion \allowbreak{}OR \allowbreak{}Condicion}; (5) Condicion $\rightarrow$ \texttt{Condicion \allowbreak{}AND \allowbreak{}Condicion}; (6) Condicion $\rightarrow$ \texttt{NOT \allowbreak{}Condicion} \\
+G0 (inicial) & Condicion & \texttt{PARENT\_\allowbreak{}IZQ} & (4) Condicion $\rightarrow$ \texttt{Condicion \allowbreak{}OR \allowbreak{}Condicion}; (5) Condicion $\rightarrow$ \texttt{Condicion \allowbreak{}AND \allowbreak{}Condicion}; (7) Condicion $\rightarrow$ \texttt{PARENT\_\allowbreak{}IZQ \allowbreak{}Condicion \allowbreak{}PARENT\_\allowbreak{}DER} \\
+G0 (inicial) & Acciones & \texttt{ID} & (13) Acciones $\rightarrow$ \texttt{Acciones \allowbreak{}AND \allowbreak{}Accion}; (14) Acciones $\rightarrow$ \texttt{Accion} \\
+G0 (inicial) & Accion & \texttt{ID} & (15) Accion $\rightarrow$ \texttt{ID \allowbreak{}ID}; (16) Accion $\rightarrow$ \texttt{ID \allowbreak{}ID \allowbreak{}DURING \allowbreak{}NUM} \\
+G1 (precedencia) & Programa & \texttt{WHEN} & (1) Programa $\rightarrow$ \texttt{Regla \allowbreak{}Programa}; (2) Programa $\rightarrow$ \texttt{Regla} \\
+G1 (precedencia) & Condicion & \texttt{ID} & (4) Condicion $\rightarrow$ \texttt{Condicion \allowbreak{}OR \allowbreak{}Conjuncion}; (5) Condicion $\rightarrow$ \texttt{Conjuncion} \\
+G1 (precedencia) & Condicion & \texttt{NOT} & (4) Condicion $\rightarrow$ \texttt{Condicion \allowbreak{}OR \allowbreak{}Conjuncion}; (5) Condicion $\rightarrow$ \texttt{Conjuncion} \\
+G1 (precedencia) & Condicion & \texttt{PARENT\_\allowbreak{}IZQ} & (4) Condicion $\rightarrow$ \texttt{Condicion \allowbreak{}OR \allowbreak{}Conjuncion}; (5) Condicion $\rightarrow$ \texttt{Conjuncion} \\
+G1 (precedencia) & Conjuncion & \texttt{ID} & (6) Conjuncion $\rightarrow$ \texttt{Conjuncion \allowbreak{}AND \allowbreak{}Factor}; (7) Conjuncion $\rightarrow$ \texttt{Factor} \\
+G1 (precedencia) & Conjuncion & \texttt{NOT} & (6) Conjuncion $\rightarrow$ \texttt{Conjuncion \allowbreak{}AND \allowbreak{}Factor}; (7) Conjuncion $\rightarrow$ \texttt{Factor} \\
+G1 (precedencia) & Conjuncion & \texttt{PARENT\_\allowbreak{}IZQ} & (6) Conjuncion $\rightarrow$ \texttt{Conjuncion \allowbreak{}AND \allowbreak{}Factor}; (7) Conjuncion $\rightarrow$ \texttt{Factor} \\
+G1 (precedencia) & Acciones & \texttt{ID} & (15) Acciones $\rightarrow$ \texttt{Acciones \allowbreak{}AND \allowbreak{}Accion}; (16) Acciones $\rightarrow$ \texttt{Accion} \\
+G1 (precedencia) & Accion & \texttt{ID} & (17) Accion $\rightarrow$ \texttt{ID \allowbreak{}ID}; (18) Accion $\rightarrow$ \texttt{ID \allowbreak{}ID \allowbreak{}DURING \allowbreak{}NUM} \\

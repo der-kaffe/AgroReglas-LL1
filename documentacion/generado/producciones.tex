@@ -1,0 +1,23 @@
+1 & Programa $\rightarrow$ \texttt{Regla \allowbreak{}Resto} \\
+2 & Resto $\rightarrow$ \texttt{Regla \allowbreak{}Resto} \\
+3 & Resto $\rightarrow$ $\varepsilon$ \\
+4 & Regla $\rightarrow$ \texttt{WHEN \allowbreak{}Condicion \allowbreak{}THEN \allowbreak{}Acciones \allowbreak{}PUNTO\_\allowbreak{}COMA} \\
+5 & Condicion $\rightarrow$ \texttt{Conjuncion \allowbreak{}ColaOr} \\
+6 & ColaOr $\rightarrow$ \texttt{OR \allowbreak{}Conjuncion \allowbreak{}ColaOr} \\
+7 & ColaOr $\rightarrow$ $\varepsilon$ \\
+8 & Conjuncion $\rightarrow$ \texttt{Factor \allowbreak{}ColaAnd} \\
+9 & ColaAnd $\rightarrow$ \texttt{AND \allowbreak{}Factor \allowbreak{}ColaAnd} \\
+10 & ColaAnd $\rightarrow$ $\varepsilon$ \\
+11 & Factor $\rightarrow$ \texttt{NOT \allowbreak{}Factor} \\
+12 & Factor $\rightarrow$ \texttt{PARENT\_\allowbreak{}IZQ \allowbreak{}Condicion \allowbreak{}PARENT\_\allowbreak{}DER} \\
+13 & Factor $\rightarrow$ \texttt{Comparacion} \\
+14 & Comparacion $\rightarrow$ \texttt{ID \allowbreak{}OP\_\allowbreak{}REL \allowbreak{}Valor} \\
+15 & Valor $\rightarrow$ \texttt{NUM} \\
+16 & Valor $\rightarrow$ \texttt{TRUE} \\
+17 & Valor $\rightarrow$ \texttt{FALSE} \\
+18 & Acciones $\rightarrow$ \texttt{Accion \allowbreak{}ColaAcciones} \\
+19 & ColaAcciones $\rightarrow$ \texttt{AND \allowbreak{}Accion \allowbreak{}ColaAcciones} \\
+20 & ColaAcciones $\rightarrow$ $\varepsilon$ \\
+21 & Accion $\rightarrow$ \texttt{ID \allowbreak{}ID \allowbreak{}Duracion} \\
+22 & Duracion $\rightarrow$ \texttt{DURING \allowbreak{}NUM} \\
+23 & Duracion $\rightarrow$ $\varepsilon$ \\

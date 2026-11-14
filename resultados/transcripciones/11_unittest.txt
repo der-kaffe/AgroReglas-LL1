@@ -1,0 +1,89 @@
+$ python3 -m unittest discover -s tests -v
+test_NOT_mayor_que_AND_mayor_que_OR (test_arboles.AST.test_NOT_mayor_que_AND_mayor_que_OR) ... ok
+test_conectores_repetidos_asocian_a_la_izquierda (test_arboles.AST.test_conectores_repetidos_asocian_a_la_izquierda) ... ok
+test_ejemplo_principal (test_arboles.AST.test_ejemplo_principal) ... ok
+test_entradas_grandes_sin_recursion (test_arboles.AST.test_entradas_grandes_sin_recursion) ... ok
+test_extension_DURING (test_arboles.AST.test_extension_DURING) ... ok
+test_graphviz_dibuja_el_ast (test_arboles.AST.test_graphviz_dibuja_el_ast) ... ok
+test_parentesis_modifican_la_agrupacion (test_arboles.AST.test_parentesis_modifican_la_agrupacion) ... ok
+test_valores_y_lexemas (test_arboles.AST.test_valores_y_lexemas) ... ok
+test_varias_reglas_y_acciones (test_arboles.AST.test_varias_reglas_y_acciones) ... ok
+test_cada_nodo_interno_aplica_una_produccion_de_G (test_arboles.ArbolConcreto.test_cada_nodo_interno_aplica_una_produccion_de_G) ... ok
+test_derivacion_por_la_izquierda (test_arboles.ArbolConcreto.test_derivacion_por_la_izquierda) ... ok
+test_durante_en_el_arbol_concreto (test_arboles.ArbolConcreto.test_durante_en_el_arbol_concreto) ... ok
+test_frontera_igual_a_la_entrada (test_arboles.ArbolConcreto.test_frontera_igual_a_la_entrada) ... ok
+test_precedencia_visible_en_el_arbol_concreto (test_arboles.ArbolConcreto.test_precedencia_visible_en_el_arbol_concreto)
+En 'a OR b AND c' el AND queda dentro del segundo operando del OR. ... ok
+test_presentacion_texto_y_dot (test_arboles.ArbolConcreto.test_presentacion_texto_y_dot) ... ok
+test_archivo_con_bom_utf8 (test_cli.CodigosDeSalida.test_archivo_con_bom_utf8) ... ok
+test_ejemplos_invalidos_retornan_1 (test_cli.CodigosDeSalida.test_ejemplos_invalidos_retornan_1) ... ok
+test_ejemplos_validos_retornan_0 (test_cli.CodigosDeSalida.test_ejemplos_validos_retornan_0) ... ok
+test_errores_de_uso_y_lectura_retornan_2 (test_cli.CodigosDeSalida.test_errores_de_uso_y_lectura_retornan_2) ... ok
+test_texto_directo_y_entrada_estandar (test_cli.CodigosDeSalida.test_texto_directo_y_entrada_estandar) ... ok
+test_analisis_de_la_gramatica (test_cli.Opciones.test_analisis_de_la_gramatica) ... ok
+test_exportacion_graphviz (test_cli.Opciones.test_exportacion_graphviz) ... ok
+test_modo_ascii (test_cli.Opciones.test_modo_ascii) ... ok
+test_salidas_detalladas (test_cli.Opciones.test_salidas_detalladas) ... ok
+test_contiene_ubicacion_encontrado_y_esperados (test_errores.Mensajes.test_contiene_ubicacion_encontrado_y_esperados) ... ok
+test_el_lexico_completo_precede_al_parser (test_errores.Mensajes.test_el_lexico_completo_precede_al_parser)
+Como en el notebook, se tokeniza toda la entrada antes de analizarla: un error ... ok
+test_esperados_por_punto_de_la_gramatica (test_errores.Mensajes.test_esperados_por_punto_de_la_gramatica) ... ok
+test_mensajes_contextuales (test_errores.Mensajes.test_mensajes_contextuales) ... ok
+test_puntero_bajo_el_simbolo (test_errores.Mensajes.test_puntero_bajo_el_simbolo) ... ok
+test_puntero_con_tabulaciones (test_errores.Mensajes.test_puntero_con_tabulaciones) ... ok
+test_solo_se_informa_el_primer_error_sintactico (test_errores.Mensajes.test_solo_se_informa_el_primer_error_sintactico) ... ok
+test_N_T_S_y_P (test_gramatica.ComponentesDeG.test_N_T_S_y_P) ... ok
+test_producciones_numeradas (test_gramatica.ComponentesDeG.test_producciones_numeradas) ... ok
+test_anulables (test_gramatica.FirstFollow.test_anulables) ... ok
+test_conjuntos_de_seleccion (test_gramatica.FirstFollow.test_conjuntos_de_seleccion) ... ok
+test_first_de_todos_los_no_terminales (test_gramatica.FirstFollow.test_first_de_todos_los_no_terminales) ... ok
+test_follow_de_todos_los_no_terminales (test_gramatica.FirstFollow.test_follow_de_todos_los_no_terminales) ... ok
+test_AND_sobrecargado_sin_conflicto (test_gramatica.TablaLL1.test_AND_sobrecargado_sin_conflicto)
+AND aparece en tres filas distintas, cada una con una sola producción. ... ok
+test_decisiones_de_la_extension_DURING (test_gramatica.TablaLL1.test_decisiones_de_la_extension_DURING) ... ok
+test_decisiones_de_precedencia (test_gramatica.TablaLL1.test_decisiones_de_precedencia) ... ok
+test_sin_conflictos_y_seleccion_disjunta (test_gramatica.TablaLL1.test_sin_conflictos_y_seleccion_disjunta) ... ok
+test_tabla_completa (test_gramatica.TablaLL1.test_tabla_completa) ... ok
+test_G0_ambigua_recursiva_y_sin_factorizar (test_gramatica.Transformaciones.test_G0_ambigua_recursiva_y_sin_factorizar) ... ok
+test_G1_con_precedencia_aun_no_es_LL1 (test_gramatica.Transformaciones.test_G1_con_precedencia_aun_no_es_LL1) ... ok
+test_detecta_conflicto_en_gramatica_ambigua (test_gramatica.Transformaciones.test_detecta_conflicto_en_gramatica_ambigua) ... ok
+test_detecta_recursion_izquierda_indirecta (test_gramatica.Transformaciones.test_detecta_recursion_izquierda_indirecta)
+Gramática de libro: S → A a | b ; A → A c | S d | ε (Aho et al., eliminación de recursión izquierda). ... ok
+test_gramatica_final_sin_recursion_ni_prefijos (test_gramatica.Transformaciones.test_gramatica_final_sin_recursion_ni_prefijos) ... ok
+test_puntos_fijos_terminan (test_gramatica.Transformaciones.test_puntos_fijos_terminan) ... ok
+test_cadenas_aleatorias_del_subconjunto (test_lexico.CompatibilidadNotebook.test_cadenas_aleatorias_del_subconjunto) ... ok
+test_casos_documentados_del_subconjunto (test_lexico.CompatibilidadNotebook.test_casos_documentados_del_subconjunto) ... ok
+test_diferencias_documentadas (test_lexico.CompatibilidadNotebook.test_diferencias_documentadas) ... ok
+test_notebook_docente_preservado (test_lexico.CompatibilidadNotebook.test_notebook_docente_preservado) ... ok
+test_salida_registrada_en_el_notebook (test_lexico.CompatibilidadNotebook.test_salida_registrada_en_el_notebook)
+La salida guardada por el docente (celda 2) coincide con la nuestra. ... ok
+test_coincidencia_mas_larga_de_operadores (test_lexico.Tokens.test_coincidencia_mas_larga_de_operadores) ... ok
+test_crlf_cuenta_una_linea (test_lexico.Tokens.test_crlf_cuenta_una_linea) ... ok
+test_error_lexico_en_segunda_linea (test_lexico.Tokens.test_error_lexico_en_segunda_linea) ... ok
+test_errores_lexicos_con_ubicacion_y_sugerencia (test_lexico.Tokens.test_errores_lexicos_con_ubicacion_y_sugerencia) ... ok
+test_numero_pegado_a_letras (test_lexico.Tokens.test_numero_pegado_a_letras) ... ok
+test_posiciones_y_eof (test_lexico.Tokens.test_posiciones_y_eof) ... ok
+test_reservadas_sin_distinguir_mayusculas (test_lexico.Tokens.test_reservadas_sin_distinguir_mayusculas) ... ok
+test_cada_caso_con_su_oraculo (test_parser.CasosDocumentados.test_cada_caso_con_su_oraculo) ... ok
+test_cantidad_minima_por_categoria (test_parser.CasosDocumentados.test_cantidad_minima_por_categoria) ... ok
+test_rechaza_cualquier_sobrante (test_parser.ConsumoCompleto.test_rechaza_cualquier_sobrante) ... ok
+test_segunda_regla_truncada (test_parser.ConsumoCompleto.test_segunda_regla_truncada) ... ok
+test_toda_entrada_aceptada_consume_todos_los_tokens (test_parser.ConsumoCompleto.test_toda_entrada_aceptada_consume_todos_los_tokens) ... ok
+test_esperados_exactos_frente_a_la_fila_de_la_tabla (test_parser.DeteccionInmediata.test_esperados_exactos_frente_a_la_fila_de_la_tabla) ... ok
+test_no_cambia_el_lenguaje_ni_la_posicion_del_error (test_parser.DeteccionInmediata.test_no_cambia_el_lenguaje_ni_la_posicion_del_error) ... ok
+test_errores_lexicos_no_llegan_al_parser (test_parser.Diferencial.test_errores_lexicos_no_llegan_al_parser) ... ok
+test_mutaciones_contra_earley (test_parser.Diferencial.test_mutaciones_contra_earley) ... ok
+test_oraciones_aleatorias_de_G0_son_aceptadas (test_parser.Diferencial.test_oraciones_aleatorias_de_G0_son_aceptadas) ... ok
+test_error_con_tokens_sin_posicion_indica_numero_de_token (test_parser.InterfazDeTokens.test_error_con_tokens_sin_posicion_indica_numero_de_token) ... ok
+test_secuencias_mal_formadas (test_parser.InterfazDeTokens.test_secuencias_mal_formadas) ... ok
+test_tokens_del_lexer_docente (test_parser.InterfazDeTokens.test_tokens_del_lexer_docente)
+El parser acepta directamente la salida [(TIPO, lexema)] de la función del notebook. ... ok
+test_analisis_json_coincide_con_el_codigo (test_resultados.ResultadosAlDia.test_analisis_json_coincide_con_el_codigo) ... ok
+test_pruebas_json_coincide_con_una_nueva_ejecucion (test_resultados.ResultadosAlDia.test_pruebas_json_coincide_con_una_nueva_ejecucion) ... ok
+
+----------------------------------------------------------------------
+Ran 75 tests in 3.243s
+
+OK
+$ echo $?
+0

@@ -1,0 +1,9 @@
+$ python3 -m agroreglas ejemplos/invalidos/06_contenido_sobrante.agro
+RECHAZADA: ejemplos/invalidos/06_contenido_sobrante.agro
+Error sintáctico en línea 1, columna 42 (posición 41): contenido sobrante después del fin de la regla: se esperaba WHEN (una nueva regla) o el fin de la entrada, pero se encontró el identificador 'fin'.
+  Esperados: WHEN, EOF
+  Cima de la pila: Resto
+   1 | WHEN humedad < 30 THEN regar sector_sur; fin
+     |                                          ^^^
+$ echo $?
+1

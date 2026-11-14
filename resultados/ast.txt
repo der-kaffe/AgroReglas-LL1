@@ -1,0 +1,21 @@
+Entrada:
+WHEN humedad < 30 AND NOT (lluvia == TRUE OR viento > 40)
+THEN regar sector_norte DURING 15 AND activar alarma;
+
+Programa (1 regla)
+└── Regla (línea 1)
+    ├── Condición
+    │   └── AND
+    │       ├── humedad < 30
+    │       └── NOT
+    │           └── OR
+    │               ├── lluvia == TRUE
+    │               └── viento > 40
+    └── Acciones
+        ├── Acción
+        │   ├── verbo: regar
+        │   ├── objetivo: sector_norte
+        │   └── DURING: 15 min
+        └── Acción
+            ├── verbo: activar
+            └── objetivo: alarma

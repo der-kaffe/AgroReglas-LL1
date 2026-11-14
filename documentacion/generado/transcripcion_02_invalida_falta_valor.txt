@@ -1,0 +1,10 @@
+$ python3 -m agroreglas ejemplos/error.agro
+RECHAZADA: ejemplos/error.agro
+Error sintáctico en línea 1, columna 16 (posición 15): se esperaba un valor (número entero, TRUE o
+    FALSE) después del operador '<', pero se encontró la palabra reservada THEN.
+  Esperados: NUM, TRUE, FALSE
+  Cima de la pila: Valor
+   1 | WHEN humedad < THEN regar sector_norte;
+     |                ^^^^
+$ echo $?
+1

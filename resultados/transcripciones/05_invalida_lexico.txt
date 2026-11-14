@@ -1,0 +1,7 @@
+$ python3 -m agroreglas ejemplos/invalidos/05_coma_entre_acciones.agro
+RECHAZADA: ejemplos/invalidos/05_coma_entre_acciones.agro
+Error léxico en línea 1, columna 40 (posición 39): símbolo no reconocido ','. Las acciones se separan con AND, no con comas.
+   1 | WHEN humedad < 30 THEN regar sector_sur, activar bomba;
+     |                                        ^
+$ echo $?
+1

@@ -1,0 +1,693 @@
+{
+  "gramatica": "G2 (final)",
+  "inicial": "Programa",
+  "epsilon": "ε",
+  "fin_de_entrada": "EOF",
+  "no_terminales": [
+    "Programa",
+    "Resto",
+    "Regla",
+    "Condicion",
+    "ColaOr",
+    "Conjuncion",
+    "ColaAnd",
+    "Factor",
+    "Comparacion",
+    "Valor",
+    "Acciones",
+    "ColaAcciones",
+    "Accion",
+    "Duracion"
+  ],
+  "terminales": [
+    "WHEN",
+    "THEN",
+    "ID",
+    "OP_REL",
+    "NUM",
+    "TRUE",
+    "FALSE",
+    "NOT",
+    "AND",
+    "OR",
+    "PARENT_IZQ",
+    "PARENT_DER",
+    "DURING",
+    "PUNTO_COMA"
+  ],
+  "producciones": [
+    {
+      "numero": 1,
+      "izquierda": "Programa",
+      "derecha": [
+        "Regla",
+        "Resto"
+      ]
+    },
+    {
+      "numero": 2,
+      "izquierda": "Resto",
+      "derecha": [
+        "Regla",
+        "Resto"
+      ]
+    },
+    {
+      "numero": 3,
+      "izquierda": "Resto",
+      "derecha": []
+    },
+    {
+      "numero": 4,
+      "izquierda": "Regla",
+      "derecha": [
+        "WHEN",
+        "Condicion",
+        "THEN",
+        "Acciones",
+        "PUNTO_COMA"
+      ]
+    },
+    {
+      "numero": 5,
+      "izquierda": "Condicion",
+      "derecha": [
+        "Conjuncion",
+        "ColaOr"
+      ]
+    },
+    {
+      "numero": 6,
+      "izquierda": "ColaOr",
+      "derecha": [
+        "OR",
+        "Conjuncion",
+        "ColaOr"
+      ]
+    },
+    {
+      "numero": 7,
+      "izquierda": "ColaOr",
+      "derecha": []
+    },
+    {
+      "numero": 8,
+      "izquierda": "Conjuncion",
+      "derecha": [
+        "Factor",
+        "ColaAnd"
+      ]
+    },
+    {
+      "numero": 9,
+      "izquierda": "ColaAnd",
+      "derecha": [
+        "AND",
+        "Factor",
+        "ColaAnd"
+      ]
+    },
+    {
+      "numero": 10,
+      "izquierda": "ColaAnd",
+      "derecha": []
+    },
+    {
+      "numero": 11,
+      "izquierda": "Factor",
+      "derecha": [
+        "NOT",
+        "Factor"
+      ]
+    },
+    {
+      "numero": 12,
+      "izquierda": "Factor",
+      "derecha": [
+        "PARENT_IZQ",
+        "Condicion",
+        "PARENT_DER"
+      ]
+    },
+    {
+      "numero": 13,
+      "izquierda": "Factor",
+      "derecha": [
+        "Comparacion"
+      ]
+    },
+    {
+      "numero": 14,
+      "izquierda": "Comparacion",
+      "derecha": [
+        "ID",
+        "OP_REL",
+        "Valor"
+      ]
+    },
+    {
+      "numero": 15,
+      "izquierda": "Valor",
+      "derecha": [
+        "NUM"
+      ]
+    },
+    {
+      "numero": 16,
+      "izquierda": "Valor",
+      "derecha": [
+        "TRUE"
+      ]
+    },
+    {
+      "numero": 17,
+      "izquierda": "Valor",
+      "derecha": [
+        "FALSE"
+      ]
+    },
+    {
+      "numero": 18,
+      "izquierda": "Acciones",
+      "derecha": [
+        "Accion",
+        "ColaAcciones"
+      ]
+    },
+    {
+      "numero": 19,
+      "izquierda": "ColaAcciones",
+      "derecha": [
+        "AND",
+        "Accion",
+        "ColaAcciones"
+      ]
+    },
+    {
+      "numero": 20,
+      "izquierda": "ColaAcciones",
+      "derecha": []
+    },
+    {
+      "numero": 21,
+      "izquierda": "Accion",
+      "derecha": [
+        "ID",
+        "ID",
+        "Duracion"
+      ]
+    },
+    {
+      "numero": 22,
+      "izquierda": "Duracion",
+      "derecha": [
+        "DURING",
+        "NUM"
+      ]
+    },
+    {
+      "numero": 23,
+      "izquierda": "Duracion",
+      "derecha": []
+    }
+  ],
+  "anulables": [
+    "Resto",
+    "ColaOr",
+    "ColaAnd",
+    "ColaAcciones",
+    "Duracion"
+  ],
+  "FIRST": {
+    "Programa": [
+      "WHEN"
+    ],
+    "Resto": [
+      "WHEN",
+      "ε"
+    ],
+    "Regla": [
+      "WHEN"
+    ],
+    "Condicion": [
+      "ID",
+      "NOT",
+      "PARENT_IZQ"
+    ],
+    "ColaOr": [
+      "OR",
+      "ε"
+    ],
+    "Conjuncion": [
+      "ID",
+      "NOT",
+      "PARENT_IZQ"
+    ],
+    "ColaAnd": [
+      "AND",
+      "ε"
+    ],
+    "Factor": [
+      "ID",
+      "NOT",
+      "PARENT_IZQ"
+    ],
+    "Comparacion": [
+      "ID"
+    ],
+    "Valor": [
+      "NUM",
+      "TRUE",
+      "FALSE"
+    ],
+    "Acciones": [
+      "ID"
+    ],
+    "ColaAcciones": [
+      "AND",
+      "ε"
+    ],
+    "Accion": [
+      "ID"
+    ],
+    "Duracion": [
+      "DURING",
+      "ε"
+    ]
+  },
+  "FOLLOW": {
+    "Programa": [
+      "EOF"
+    ],
+    "Resto": [
+      "EOF"
+    ],
+    "Regla": [
+      "WHEN",
+      "EOF"
+    ],
+    "Condicion": [
+      "THEN",
+      "PARENT_DER"
+    ],
+    "ColaOr": [
+      "THEN",
+      "PARENT_DER"
+    ],
+    "Conjuncion": [
+      "THEN",
+      "OR",
+      "PARENT_DER"
+    ],
+    "ColaAnd": [
+      "THEN",
+      "OR",
+      "PARENT_DER"
+    ],
+    "Factor": [
+      "THEN",
+      "AND",
+      "OR",
+      "PARENT_DER"
+    ],
+    "Comparacion": [
+      "THEN",
+      "AND",
+      "OR",
+      "PARENT_DER"
+    ],
+    "Valor": [
+      "THEN",
+      "AND",
+      "OR",
+      "PARENT_DER"
+    ],
+    "Acciones": [
+      "PUNTO_COMA"
+    ],
+    "ColaAcciones": [
+      "PUNTO_COMA"
+    ],
+    "Accion": [
+      "AND",
+      "PUNTO_COMA"
+    ],
+    "Duracion": [
+      "AND",
+      "PUNTO_COMA"
+    ]
+  },
+  "SELECT": {
+    "1": [
+      "WHEN"
+    ],
+    "2": [
+      "WHEN"
+    ],
+    "3": [
+      "EOF"
+    ],
+    "4": [
+      "WHEN"
+    ],
+    "5": [
+      "ID",
+      "NOT",
+      "PARENT_IZQ"
+    ],
+    "6": [
+      "OR"
+    ],
+    "7": [
+      "THEN",
+      "PARENT_DER"
+    ],
+    "8": [
+      "ID",
+      "NOT",
+      "PARENT_IZQ"
+    ],
+    "9": [
+      "AND"
+    ],
+    "10": [
+      "THEN",
+      "OR",
+      "PARENT_DER"
+    ],
+    "11": [
+      "NOT"
+    ],
+    "12": [
+      "PARENT_IZQ"
+    ],
+    "13": [
+      "ID"
+    ],
+    "14": [
+      "ID"
+    ],
+    "15": [
+      "NUM"
+    ],
+    "16": [
+      "TRUE"
+    ],
+    "17": [
+      "FALSE"
+    ],
+    "18": [
+      "ID"
+    ],
+    "19": [
+      "AND"
+    ],
+    "20": [
+      "PUNTO_COMA"
+    ],
+    "21": [
+      "ID"
+    ],
+    "22": [
+      "DURING"
+    ],
+    "23": [
+      "AND",
+      "PUNTO_COMA"
+    ]
+  },
+  "tabla": {
+    "Programa": {
+      "WHEN": 1
+    },
+    "Resto": {
+      "WHEN": 2,
+      "EOF": 3
+    },
+    "Regla": {
+      "WHEN": 4
+    },
+    "Condicion": {
+      "ID": 5,
+      "NOT": 5,
+      "PARENT_IZQ": 5
+    },
+    "ColaOr": {
+      "THEN": 7,
+      "OR": 6,
+      "PARENT_DER": 7
+    },
+    "Conjuncion": {
+      "ID": 8,
+      "NOT": 8,
+      "PARENT_IZQ": 8
+    },
+    "ColaAnd": {
+      "THEN": 10,
+      "AND": 9,
+      "OR": 10,
+      "PARENT_DER": 10
+    },
+    "Factor": {
+      "ID": 13,
+      "NOT": 11,
+      "PARENT_IZQ": 12
+    },
+    "Comparacion": {
+      "ID": 14
+    },
+    "Valor": {
+      "NUM": 15,
+      "TRUE": 16,
+      "FALSE": 17
+    },
+    "Acciones": {
+      "ID": 18
+    },
+    "ColaAcciones": {
+      "AND": 19,
+      "PUNTO_COMA": 20
+    },
+    "Accion": {
+      "ID": 21
+    },
+    "Duracion": {
+      "AND": 23,
+      "DURING": 22,
+      "PUNTO_COMA": 23
+    }
+  },
+  "celdas_con_produccion": 31,
+  "celdas_de_error": 179,
+  "pasadas_punto_fijo": {
+    "FIRST": 5,
+    "FOLLOW": 3
+  },
+  "conflictos": [],
+  "recursion_izquierda_directa": [],
+  "recursion_izquierda_indirecta": {},
+  "prefijos_comunes": [],
+  "es_LL1": true,
+  "versiones_previas": {
+    "G0 (inicial)": {
+      "conflictos": [
+        {
+          "no_terminal": "Programa",
+          "terminal": "WHEN",
+          "producciones": [
+            1,
+            2
+          ]
+        },
+        {
+          "no_terminal": "Condicion",
+          "terminal": "ID",
+          "producciones": [
+            4,
+            5,
+            8
+          ]
+        },
+        {
+          "no_terminal": "Condicion",
+          "terminal": "NOT",
+          "producciones": [
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "no_terminal": "Condicion",
+          "terminal": "PARENT_IZQ",
+          "producciones": [
+            4,
+            5,
+            7
+          ]
+        },
+        {
+          "no_terminal": "Acciones",
+          "terminal": "ID",
+          "producciones": [
+            13,
+            14
+          ]
+        },
+        {
+          "no_terminal": "Accion",
+          "terminal": "ID",
+          "producciones": [
+            15,
+            16
+          ]
+        }
+      ],
+      "recursion_izquierda_directa": [
+        "Condicion",
+        "Acciones"
+      ],
+      "recursion_izquierda_indirecta": {},
+      "prefijos_comunes": [
+        {
+          "no_terminal": "Programa",
+          "producciones": [
+            1,
+            2
+          ],
+          "prefijo": [
+            "Regla"
+          ]
+        },
+        {
+          "no_terminal": "Condicion",
+          "producciones": [
+            4,
+            5
+          ],
+          "prefijo": [
+            "Condicion"
+          ]
+        },
+        {
+          "no_terminal": "Accion",
+          "producciones": [
+            15,
+            16
+          ],
+          "prefijo": [
+            "ID",
+            "ID"
+          ]
+        }
+      ],
+      "es_LL1": false
+    },
+    "G1 (precedencia)": {
+      "conflictos": [
+        {
+          "no_terminal": "Programa",
+          "terminal": "WHEN",
+          "producciones": [
+            1,
+            2
+          ]
+        },
+        {
+          "no_terminal": "Condicion",
+          "terminal": "ID",
+          "producciones": [
+            4,
+            5
+          ]
+        },
+        {
+          "no_terminal": "Condicion",
+          "terminal": "NOT",
+          "producciones": [
+            4,
+            5
+          ]
+        },
+        {
+          "no_terminal": "Condicion",
+          "terminal": "PARENT_IZQ",
+          "producciones": [
+            4,
+            5
+          ]
+        },
+        {
+          "no_terminal": "Conjuncion",
+          "terminal": "ID",
+          "producciones": [
+            6,
+            7
+          ]
+        },
+        {
+          "no_terminal": "Conjuncion",
+          "terminal": "NOT",
+          "producciones": [
+            6,
+            7
+          ]
+        },
+        {
+          "no_terminal": "Conjuncion",
+          "terminal": "PARENT_IZQ",
+          "producciones": [
+            6,
+            7
+          ]
+        },
+        {
+          "no_terminal": "Acciones",
+          "terminal": "ID",
+          "producciones": [
+            15,
+            16
+          ]
+        },
+        {
+          "no_terminal": "Accion",
+          "terminal": "ID",
+          "producciones": [
+            17,
+            18
+          ]
+        }
+      ],
+      "recursion_izquierda_directa": [
+        "Condicion",
+        "Conjuncion",
+        "Acciones"
+      ],
+      "recursion_izquierda_indirecta": {},
+      "prefijos_comunes": [
+        {
+          "no_terminal": "Programa",
+          "producciones": [
+            1,
+            2
+          ],
+          "prefijo": [
+            "Regla"
+          ]
+        },
+        {
+          "no_terminal": "Accion",
+          "producciones": [
+            17,
+            18
+          ],
+          "prefijo": [
+            "ID",
+            "ID"
+          ]
+        }
+      ],
+      "es_LL1": false
+    }
+  }
+}

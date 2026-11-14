@@ -1,0 +1,4 @@
+válida: 16/16 coinciden con lo esperado
+inválida: 22/22 coinciden con lo esperado
+límite: 21/21 coinciden con lo esperado
+TOTAL: 59/59

@@ -1,0 +1,16 @@
+1 & Programa $\rightarrow$ \texttt{Regla \allowbreak{}Programa} \\
+2 & Programa $\rightarrow$ \texttt{Regla} \\
+3 & Regla $\rightarrow$ \texttt{WHEN \allowbreak{}Condicion \allowbreak{}THEN \allowbreak{}Acciones \allowbreak{}PUNTO\_\allowbreak{}COMA} \\
+4 & Condicion $\rightarrow$ \texttt{Condicion \allowbreak{}OR \allowbreak{}Condicion} \\
+5 & Condicion $\rightarrow$ \texttt{Condicion \allowbreak{}AND \allowbreak{}Condicion} \\
+6 & Condicion $\rightarrow$ \texttt{NOT \allowbreak{}Condicion} \\
+7 & Condicion $\rightarrow$ \texttt{PARENT\_\allowbreak{}IZQ \allowbreak{}Condicion \allowbreak{}PARENT\_\allowbreak{}DER} \\
+8 & Condicion $\rightarrow$ \texttt{Comparacion} \\
+9 & Comparacion $\rightarrow$ \texttt{ID \allowbreak{}OP\_\allowbreak{}REL \allowbreak{}Valor} \\
+10 & Valor $\rightarrow$ \texttt{NUM} \\
+11 & Valor $\rightarrow$ \texttt{TRUE} \\
+12 & Valor $\rightarrow$ \texttt{FALSE} \\
+13 & Acciones $\rightarrow$ \texttt{Acciones \allowbreak{}AND \allowbreak{}Accion} \\
+14 & Acciones $\rightarrow$ \texttt{Accion} \\
+15 & Accion $\rightarrow$ \texttt{ID \allowbreak{}ID} \\
+16 & Accion $\rightarrow$ \texttt{ID \allowbreak{}ID \allowbreak{}DURING \allowbreak{}NUM} \\

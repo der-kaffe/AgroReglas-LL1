@@ -1,0 +1,29 @@
+Entrada: WHEN h < 1 THEN a b DURING 2;
+
+Paso  Pila (cima a la derecha)                                    Entrada                                       Acción
+   1  EOF Programa                                                WHEN ID OP_REL NUM THEN ID ID … EOF           M[Programa, WHEN] = (1) Programa → Regla Resto
+   2  EOF Resto Regla                                             WHEN ID OP_REL NUM THEN ID ID … EOF           M[Regla, WHEN] = (4) Regla → WHEN Condicion THEN Acciones PUNTO_COMA
+   3  EOF Resto PUNTO_COMA Acciones THEN Condicion WHEN           WHEN ID OP_REL NUM THEN ID ID … EOF           coincidir WHEN
+   4  EOF Resto PUNTO_COMA Acciones THEN Condicion                ID OP_REL NUM THEN ID ID DURING … EOF         M[Condicion, ID] = (5) Condicion → Conjuncion ColaOr
+   5  EOF Resto PUNTO_COMA Acciones THEN ColaOr Conjuncion        ID OP_REL NUM THEN ID ID DURING … EOF         M[Conjuncion, ID] = (8) Conjuncion → Factor ColaAnd
+   6  EOF Resto PUNTO_COMA Acciones THEN ColaOr ColaAnd Factor    ID OP_REL NUM THEN ID ID DURING … EOF         M[Factor, ID] = (13) Factor → Comparacion
+   7  EOF Resto PUNTO_COMA Acciones THEN ColaOr ColaAnd Comparacion  ID OP_REL NUM THEN ID ID DURING … EOF         M[Comparacion, ID] = (14) Comparacion → ID OP_REL Valor
+   8  EOF Resto PUNTO_COMA Acciones THEN ColaOr ColaAnd Valor OP_REL ID  ID OP_REL NUM THEN ID ID DURING … EOF         coincidir ID
+   9  EOF Resto PUNTO_COMA Acciones THEN ColaOr ColaAnd Valor OP_REL  OP_REL NUM THEN ID ID DURING NUM … EOF        coincidir OP_REL
+  10  EOF Resto PUNTO_COMA Acciones THEN ColaOr ColaAnd Valor     NUM THEN ID ID DURING NUM PUNTO_COMA EOF      M[Valor, NUM] = (15) Valor → NUM
+  11  EOF Resto PUNTO_COMA Acciones THEN ColaOr ColaAnd NUM       NUM THEN ID ID DURING NUM PUNTO_COMA EOF      coincidir NUM
+  12  EOF Resto PUNTO_COMA Acciones THEN ColaOr ColaAnd           THEN ID ID DURING NUM PUNTO_COMA EOF          M[ColaAnd, THEN] = (10) ColaAnd → ε
+  13  EOF Resto PUNTO_COMA Acciones THEN ColaOr                   THEN ID ID DURING NUM PUNTO_COMA EOF          M[ColaOr, THEN] = (7) ColaOr → ε
+  14  EOF Resto PUNTO_COMA Acciones THEN                          THEN ID ID DURING NUM PUNTO_COMA EOF          coincidir THEN
+  15  EOF Resto PUNTO_COMA Acciones                               ID ID DURING NUM PUNTO_COMA EOF               M[Acciones, ID] = (18) Acciones → Accion ColaAcciones
+  16  EOF Resto PUNTO_COMA ColaAcciones Accion                    ID ID DURING NUM PUNTO_COMA EOF               M[Accion, ID] = (21) Accion → ID ID Duracion
+  17  EOF Resto PUNTO_COMA ColaAcciones Duracion ID ID            ID ID DURING NUM PUNTO_COMA EOF               coincidir ID
+  18  EOF Resto PUNTO_COMA ColaAcciones Duracion ID               ID DURING NUM PUNTO_COMA EOF                  coincidir ID
+  19  EOF Resto PUNTO_COMA ColaAcciones Duracion                  DURING NUM PUNTO_COMA EOF                     M[Duracion, DURING] = (22) Duracion → DURING NUM
+  20  EOF Resto PUNTO_COMA ColaAcciones NUM DURING                DURING NUM PUNTO_COMA EOF                     coincidir DURING
+  21  EOF Resto PUNTO_COMA ColaAcciones NUM                       NUM PUNTO_COMA EOF                            coincidir NUM
+  22  EOF Resto PUNTO_COMA ColaAcciones                           PUNTO_COMA EOF                                M[ColaAcciones, PUNTO_COMA] = (20) ColaAcciones → ε
+  23  EOF Resto PUNTO_COMA                                        PUNTO_COMA EOF                                coincidir PUNTO_COMA
+  24  EOF Resto                                                   EOF                                           M[Resto, EOF] = (3) Resto → ε
+  25  EOF                                                         EOF                                           coincidir EOF
+  26                                                                                                            aceptar

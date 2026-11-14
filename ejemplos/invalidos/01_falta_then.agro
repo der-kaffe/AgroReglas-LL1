@@ -1,0 +1,1 @@
+WHEN humedad < 30 regar sector_sur;

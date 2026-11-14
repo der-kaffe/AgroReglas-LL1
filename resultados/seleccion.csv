@@ -1,0 +1,24 @@
+N.º,Producción,SELECT
+1,Programa → Regla Resto,WHEN
+2,Resto → Regla Resto,WHEN
+3,Resto → ε,EOF
+4,Regla → WHEN Condicion THEN Acciones PUNTO_COMA,WHEN
+5,Condicion → Conjuncion ColaOr,"ID, NOT, PARENT_IZQ"
+6,ColaOr → OR Conjuncion ColaOr,OR
+7,ColaOr → ε,"THEN, PARENT_DER"
+8,Conjuncion → Factor ColaAnd,"ID, NOT, PARENT_IZQ"
+9,ColaAnd → AND Factor ColaAnd,AND
+10,ColaAnd → ε,"THEN, OR, PARENT_DER"
+11,Factor → NOT Factor,NOT
+12,Factor → PARENT_IZQ Condicion PARENT_DER,PARENT_IZQ
+13,Factor → Comparacion,ID
+14,Comparacion → ID OP_REL Valor,ID
+15,Valor → NUM,NUM
+16,Valor → TRUE,TRUE
+17,Valor → FALSE,FALSE
+18,Acciones → Accion ColaAcciones,ID
+19,ColaAcciones → AND Accion ColaAcciones,AND
+20,ColaAcciones → ε,PUNTO_COMA
+21,Accion → ID ID Duracion,ID
+22,Duracion → DURING NUM,DURING
+23,Duracion → ε,"AND, PUNTO_COMA"

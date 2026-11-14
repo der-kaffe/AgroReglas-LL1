@@ -1,0 +1,14 @@
+Programa & no & \{\texttt{WHEN}\} & \{\texttt{EOF}\} \\
+Resto & sí & \{\texttt{WHEN}, $\varepsilon$\} & \{\texttt{EOF}\} \\
+Regla & no & \{\texttt{WHEN}\} & \{\texttt{WHEN}, \texttt{EOF}\} \\
+Condicion & no & \{\texttt{ID}, \texttt{NOT}, \texttt{PARENT\_\allowbreak{}IZQ}\} & \{\texttt{THEN}, \texttt{PARENT\_\allowbreak{}DER}\} \\
+ColaOr & sí & \{\texttt{OR}, $\varepsilon$\} & \{\texttt{THEN}, \texttt{PARENT\_\allowbreak{}DER}\} \\
+Conjuncion & no & \{\texttt{ID}, \texttt{NOT}, \texttt{PARENT\_\allowbreak{}IZQ}\} & \{\texttt{THEN}, \texttt{OR}, \texttt{PARENT\_\allowbreak{}DER}\} \\
+ColaAnd & sí & \{\texttt{AND}, $\varepsilon$\} & \{\texttt{THEN}, \texttt{OR}, \texttt{PARENT\_\allowbreak{}DER}\} \\
+Factor & no & \{\texttt{ID}, \texttt{NOT}, \texttt{PARENT\_\allowbreak{}IZQ}\} & \{\texttt{THEN}, \texttt{AND}, \texttt{OR}, \texttt{PARENT\_\allowbreak{}DER}\} \\
+Comparacion & no & \{\texttt{ID}\} & \{\texttt{THEN}, \texttt{AND}, \texttt{OR}, \texttt{PARENT\_\allowbreak{}DER}\} \\
+Valor & no & \{\texttt{NUM}, \texttt{TRUE}, \texttt{FALSE}\} & \{\texttt{THEN}, \texttt{AND}, \texttt{OR}, \texttt{PARENT\_\allowbreak{}DER}\} \\
+Acciones & no & \{\texttt{ID}\} & \{\texttt{PUNTO\_\allowbreak{}COMA}\} \\
+ColaAcciones & sí & \{\texttt{AND}, $\varepsilon$\} & \{\texttt{PUNTO\_\allowbreak{}COMA}\} \\
+Accion & no & \{\texttt{ID}\} & \{\texttt{AND}, \texttt{PUNTO\_\allowbreak{}COMA}\} \\
+Duracion & sí & \{\texttt{DURING}, $\varepsilon$\} & \{\texttt{AND}, \texttt{PUNTO\_\allowbreak{}COMA}\} \\

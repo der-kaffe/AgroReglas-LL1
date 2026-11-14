@@ -1,0 +1,8 @@
+WHEN humedad_suelo < 25 AND temperatura > 28
+THEN regar invernadero DURING 20 AND abrir ventanas;
+
+WHEN viento > 60 OR granizo == TRUE
+THEN cerrar ventanas AND cerrar compuertas;
+
+WHEN (humedad_suelo < 15 OR temperatura >= 35) AND NOT lluvia == TRUE
+THEN regar invernadero DURING 30 AND activar alarma;

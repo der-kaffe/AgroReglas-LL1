@@ -1,0 +1,12 @@
+ 122  def _viables(pila):
+ 123      """Terminales que pueden continuar la entrada con esta pila (cima al final)."""
+ 124      resultado = set()
+ 125      for nodo in reversed(pila):
+ 126          simbolo = nodo.simbolo
+ 127          if not GRAMATICA.es_no_terminal(simbolo):
+ 128              resultado.add(simbolo)
+ 129              return resultado
+ 130          resultado |= ANALISIS.first[simbolo] - {EPS}
+ 131          if simbolo not in ANALISIS.anulables:
+ 132              return resultado
+ 133      return resultado

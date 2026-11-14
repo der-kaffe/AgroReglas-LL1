@@ -1,0 +1,50 @@
+ 181  def analizar_tokens(tokens, *, traza=None, deteccion_inmediata=True):
+ 182      """Reconoce una secuencia de tokens y devuelve la raíz del árbol concreto.
+ 183  
+ 184      ``traza``: lista opcional donde se agregan tuplas (pila, entrada, acción).
+ 185      Lanza ErrorSintactico ante el primer error (no hay recuperación).
+ 186      """
+ 187      tokens = _normalizar(tokens)
+ 188      raiz = Nodo(GRAMATICA.inicial)
+ 189      pila = [Nodo(EOF), raiz]
+ 190      parentesis = []    # tokens '(' aún abiertos, para los mensajes de error
+ 191      i = 0
+ 192      while pila:
+ 193          cima = pila[-1]
+ 194          actual = tokens[i]
+ 195          if not GRAMATICA.es_no_terminal(cima.simbolo):          # terminal o EOF
+ 196              if cima.simbolo != actual.tipo:
+ 197                  _error(tokens, i, pila, [cima.simbolo], parentesis)
+ 198              if traza is not None:
+ 199                  traza.append((_texto_pila(pila), _texto_entrada(tokens, i),
+ 200                                f'coincidir {actual.tipo}'))
+ 201              pila.pop()
+ 202              cima.token = actual
+ 203              if actual.tipo == 'PARENT_IZQ':
+ 204                  parentesis.append(actual)
+ 205              elif actual.tipo == 'PARENT_DER':
+ 206                  parentesis.pop()
+ 207              if actual.tipo != EOF:
+ 208                  i += 1
+ 209              continue
+ 210          produccion = ANALISIS.tabla.get((cima.simbolo, actual.tipo))
+ 211          if produccion is None:
+ 212              esperados = _viables(pila) if deteccion_inmediata else ANALISIS.fila(cima.simbolo)
+ 213              _error(tokens, i, pila, esperados, parentesis)
+ 214          if deteccion_inmediata and not produccion.derecha:
+ 215              viables = _viables(pila)
+ 216              if actual.tipo not in viables:
+ 217                  _error(tokens, i, pila, viables, parentesis)
+ 218          if traza is not None:
+ 219              celda = f'M[{cima.simbolo}, {actual.tipo}] = ({produccion.numero}) {produccion}'
+ 220              traza.append((_texto_pila(pila), _texto_entrada(tokens, i), celda))
+ 221          pila.pop()
+ 222          cima.produccion = produccion
+ 223          if produccion.derecha:
+ 224              cima.hijos = [Nodo(simbolo) for simbolo in produccion.derecha]
+ 225              pila.extend(reversed(cima.hijos))
+ 226          else:
+ 227              cima.hijos = [Nodo(EPS)]
+ 228      if traza is not None:
+ 229          traza.append(('', '', 'aceptar'))
+ 230      return raiz

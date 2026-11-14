@@ -1,0 +1,15 @@
+No terminal,Anulable,FIRST,FOLLOW
+Programa,no,WHEN,EOF
+Resto,sí,"WHEN, ε",EOF
+Regla,no,WHEN,"WHEN, EOF"
+Condicion,no,"ID, NOT, PARENT_IZQ","THEN, PARENT_DER"
+ColaOr,sí,"OR, ε","THEN, PARENT_DER"
+Conjuncion,no,"ID, NOT, PARENT_IZQ","THEN, OR, PARENT_DER"
+ColaAnd,sí,"AND, ε","THEN, OR, PARENT_DER"
+Factor,no,"ID, NOT, PARENT_IZQ","THEN, AND, OR, PARENT_DER"
+Comparacion,no,ID,"THEN, AND, OR, PARENT_DER"
+Valor,no,"NUM, TRUE, FALSE","THEN, AND, OR, PARENT_DER"
+Acciones,no,ID,PUNTO_COMA
+ColaAcciones,sí,"AND, ε",PUNTO_COMA
+Accion,no,ID,"AND, PUNTO_COMA"
+Duracion,sí,"DURING, ε","AND, PUNTO_COMA"

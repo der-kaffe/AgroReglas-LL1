@@ -1,0 +1,47 @@
+# python3 -m agroreglas <archivo> para cada ejemplo; [código de salida]
+[1] ejemplos/error.agro
+    Error sintáctico en línea 1, columna 16 (posición 15): se esperaba un valor (número entero, TRUE
+    o FALSE) después del operador '<', pero se encontró la palabra reservada THEN.
+[1] ejemplos/invalidos/01_falta_then.agro
+    Error sintáctico en línea 1, columna 19 (posición 18): se esperaba THEN, AND u OR después del
+    número 30, pero se encontró el identificador 'regar'.
+[1] ejemplos/invalidos/02_falta_valor.agro
+    Error sintáctico en línea 1, columna 16 (posición 15): se esperaba un valor (número entero, TRUE
+    o FALSE) después del operador '<', pero se encontró la palabra reservada THEN.
+[1] ejemplos/invalidos/03_parentesis_sin_cerrar.agro
+    Error sintáctico en línea 2, columna 1 (posición 38): se esperaba AND, OR o ')' después de
+    FALSE, pero se encontró la palabra reservada THEN. El '(' abierto en línea 1, columna 6 sigue
+    sin cerrar.
+[1] ejemplos/invalidos/04_during_sin_minutos.agro
+    Error sintáctico en línea 1, columna 47 (posición 46): se esperaba la duración en minutos (un
+    número entero) después de DURING, pero se encontró el símbolo ';'.
+[1] ejemplos/invalidos/05_coma_entre_acciones.agro
+    Error léxico en línea 1, columna 40 (posición 39): símbolo no reconocido ','. Las acciones se
+    separan con AND, no con comas.
+[1] ejemplos/invalidos/06_contenido_sobrante.agro
+    Error sintáctico en línea 1, columna 42 (posición 41): contenido sobrante después del fin de la
+    regla: se esperaba WHEN (una nueva regla) o el fin de la entrada, pero se encontró el
+    identificador 'fin'.
+[1] ejemplos/invalidos/07_regla_truncada.agro
+    Error sintáctico en línea 2, columna 40 (posición 80): se esperaba AND, DURING o ';' después de
+    'compuertas', pero se encontró el fin de la entrada (regla incompleta).
+[1] ejemplos/invalidos/08_vacio.agro
+    Error sintáctico en línea 1, columna 1 (posición 0): la entrada está vacía: se esperaba al menos
+    una regla que comience con WHEN.
+[0] ejemplos/riego.agro
+    ACEPTADA: ejemplos/riego.agro es sintácticamente válida (2 reglas, 3 acciones, 34 tokens).
+[0] ejemplos/validos/01_regla_minima.agro
+    ACEPTADA: ejemplos/validos/01_regla_minima.agro es sintácticamente válida (1 regla, 1 acción, 8
+    tokens).
+[0] ejemplos/validos/02_ejemplo_enunciado.agro
+    ACEPTADA: ejemplos/validos/02_ejemplo_enunciado.agro es sintácticamente válida (1 regla, 2
+    acciones, 24 tokens).
+[0] ejemplos/validos/03_invernadero.agro
+    ACEPTADA: ejemplos/validos/03_invernadero.agro es sintácticamente válida (3 reglas, 6 acciones,
+    56 tokens).
+[0] ejemplos/validos/04_tanque.agro
+    ACEPTADA: ejemplos/validos/04_tanque.agro es sintácticamente válida (2 reglas, 2 acciones, 22
+    tokens).
+[0] ejemplos/validos/05_minusculas.agro
+    ACEPTADA: ejemplos/validos/05_minusculas.agro es sintácticamente válida (1 regla, 1 acción, 10
+    tokens).

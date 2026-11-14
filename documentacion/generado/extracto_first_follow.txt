@@ -1,0 +1,45 @@
+  35  def first_secuencia(secuencia, first, g):
+  36      """FIRST de una secuencia de símbolos; incluye ε si toda la secuencia es anulable."""
+  37      resultado = set()
+  38      for simbolo in secuencia:
+  39          conjunto = first[simbolo] if g.es_no_terminal(simbolo) else {simbolo}
+  40          resultado |= conjunto - {EPS}
+  41          if EPS not in conjunto:
+  42              return resultado
+  43      resultado.add(EPS)
+  44      return resultado
+  45  
+  46  
+  47  def calcular_first(g):
+  48      """Devuelve (FIRST, número de pasadas hasta el punto fijo)."""
+  49      first = {a: set() for a in g.no_terminales}
+  50      pasadas, cambio = 0, True
+  51      while cambio:
+  52          cambio, pasadas = False, pasadas + 1
+  53          for p in g.producciones:
+  54              nuevo = first_secuencia(p.derecha, first, g)
+  55              if not nuevo <= first[p.izquierda]:
+  56                  first[p.izquierda] |= nuevo
+  57                  cambio = True
+  58      return first, pasadas
+  59  
+  60  
+  61  def calcular_follow(g, first):
+  62      """Devuelve (FOLLOW, número de pasadas). FOLLOW(S) contiene EOF ($)."""
+  63      follow = {a: set() for a in g.no_terminales}
+  64      follow[g.inicial].add(EOF)
+  65      pasadas, cambio = 0, True
+  66      while cambio:
+  67          cambio, pasadas = False, pasadas + 1
+  68          for p in g.producciones:
+  69              for i, simbolo in enumerate(p.derecha):
+  70                  if not g.es_no_terminal(simbolo):
+  71                      continue
+  72                  resto = first_secuencia(p.derecha[i + 1:], first, g)
+  73                  nuevo = resto - {EPS}
+  74                  if EPS in resto:                  # β anulable (o vacía): hereda FOLLOW(A)
+  75                      nuevo |= follow[p.izquierda]
+  76                  if not nuevo <= follow[simbolo]:
+  77                      follow[simbolo] |= nuevo
+  78                      cambio = True
+  79      return follow, pasadas

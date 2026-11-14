@@ -1,0 +1,44 @@
+# G2 (final): S = Programa; |N| = 14, |T| = 14, |P| = 23
+( 1) Programa → Regla Resto
+( 2) Resto → Regla Resto
+( 3) Resto → ε
+( 4) Regla → WHEN Condicion THEN Acciones PUNTO_COMA
+( 5) Condicion → Conjuncion ColaOr
+( 6) ColaOr → OR Conjuncion ColaOr
+( 7) ColaOr → ε
+( 8) Conjuncion → Factor ColaAnd
+( 9) ColaAnd → AND Factor ColaAnd
+(10) ColaAnd → ε
+(11) Factor → NOT Factor
+(12) Factor → PARENT_IZQ Condicion PARENT_DER
+(13) Factor → Comparacion
+(14) Comparacion → ID OP_REL Valor
+(15) Valor → NUM
+(16) Valor → TRUE
+(17) Valor → FALSE
+(18) Acciones → Accion ColaAcciones
+(19) ColaAcciones → AND Accion ColaAcciones
+(20) ColaAcciones → ε
+(21) Accion → ID ID Duracion
+(22) Duracion → DURING NUM
+(23) Duracion → ε
+
+# G0 (inicial) (versión previa, no LL(1))
+Programa    -> Regla Programa | Regla
+Regla       -> WHEN Condicion THEN Acciones PUNTO_COMA
+Condicion   -> Condicion OR Condicion | Condicion AND Condicion | NOT Condicion | PARENT_IZQ Condicion PARENT_DER | Comparacion
+Comparacion -> ID OP_REL Valor
+Valor       -> NUM | TRUE | FALSE
+Acciones    -> Acciones AND Accion | Accion
+Accion      -> ID ID | ID ID DURING NUM
+
+# G1 (precedencia) (versión previa, no LL(1))
+Programa    -> Regla Programa | Regla
+Regla       -> WHEN Condicion THEN Acciones PUNTO_COMA
+Condicion   -> Condicion OR Conjuncion | Conjuncion
+Conjuncion  -> Conjuncion AND Factor | Factor
+Factor      -> NOT Factor | PARENT_IZQ Condicion PARENT_DER | Comparacion
+Comparacion -> ID OP_REL Valor
+Valor       -> NUM | TRUE | FALSE
+Acciones    -> Acciones AND Accion | Accion
+Accion      -> ID ID | ID ID DURING NUM

@@ -1,0 +1,63 @@
+L01 & \texttt{(cadena \allowbreak{}vacía)} & RECHAZA (sint., 1:1) & RECHAZA (sint., 1:1) $\checkmark$ & Entrada vacía \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: la entrada está vacía: se esperaba al menos una regla que comience con WHEN.} \\
+\hline
+L02 & \texttt{ \allowbreak{}\textbackslash{}t\textbackslash{}r\textbackslash{}n \allowbreak{} \allowbreak{}} & RECHAZA (sint., 2:3) & RECHAZA (sint., 2:3) $\checkmark$ & Solo blancos, incluido CRLF \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: la entrada está vacía: se esperaba al menos una regla que comience con WHEN.} \\
+\hline
+L03 & \texttt{WHEN} & RECHAZA (sint., 1:5) & RECHAZA (sint., 1:5) $\checkmark$ & Regla truncada después de WHEN \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba una condición (\allowbreak{}un sensor,\allowbreak{} NOT o \textquotesingle{}(\allowbreak{}\textquotesingle{}) después de WHEN,\allowbreak{} pero se encontró el fin de la entrada (\allowbreak{}regla incompleta).} \\
+\hline
+L04 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30} & RECHAZA (sint., 1:18) & RECHAZA (sint., 1:18) $\checkmark$ & Regla truncada después de la condición \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba THEN,\allowbreak{} AND u OR después del número 30,\allowbreak{} pero se encontró el fin de la entrada (\allowbreak{}regla incompleta).} \\
+\hline
+L05 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur; \allowbreak{}basura} & RECHAZA (sint., 1:42) & RECHAZA (sint., 1:42) $\checkmark$ & Contenido sobrante tras una regla válida \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: contenido sobrante después del fin de la regla: se esperaba WHEN (\allowbreak{}una nueva regla) o el fin de la entrada,\allowbreak{} pero se encontró el identificador \textquotesingle{}basura\textquotesingle{}.} \\
+\hline
+L06 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;;} & RECHAZA (sint., 1:41) & RECHAZA (sint., 1:41) $\checkmark$ & \textquotesingle{};\textquotesingle{} sobrante (sentencia vacía) \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: contenido sobrante después del fin de la regla: se esperaba WHEN (\allowbreak{}una nueva regla) o el fin de la entrada,\allowbreak{} pero se encontró el símbolo \textquotesingle{};\textquotesingle{}.} \\
+\hline
+L07 & \texttt{WHEN(humedad\textless{}30)THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur \allowbreak{}DURING \allowbreak{}0;} & ACEPTA & ACEPTA $\checkmark$ & Sin espacios entre tokens; DURING 0 \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: humedad \textless{} 30} \\
+\hline
+L08 & \texttt{WHEN \allowbreak{}\_\allowbreak{}h \allowbreak{}\textless{}= \allowbreak{}0 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}\_\allowbreak{}sur\_\allowbreak{}2;} & ACEPTA & ACEPTA $\checkmark$ & Identificadores con \textquotesingle{}\_\textquotesingle{} y dígitos; valor 0 \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: \_h \textless{}= 0} \\
+\hline
+L09 & \texttt{WHEN \allowbreak{}caudal \allowbreak{}\textgreater{} \allowbreak{}99\ldots{}9 \allowbreak{}(200 \allowbreak{}dígitos) \allowbreak{}THEN \allowbreak{}cerrar \allowbreak{}valvula\_\allowbreak{}1;} & ACEPTA & ACEPTA $\checkmark$ & Número de 200 dígitos \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: caudal \textgreater{} 999999999999999999999999\allowbreak{}999999999999999999999999\allowbreak{}999999999999999999999999\allowbreak{}999999999999999999999999\allowbreak{}99999999999999\ldots{}} \\
+\hline
+L10 & \texttt{WHEN \allowbreak{}NOT \allowbreak{}NOT \allowbreak{}\ldots{} \allowbreak{}(200 \allowbreak{}veces) \allowbreak{}lluvia \allowbreak{}== \allowbreak{}TRUE \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & ACEPTA & ACEPTA $\checkmark$ & 200 NOT anidados \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT(\allowbreak{}NOT\ldots{}} \\
+\hline
+L11 & \texttt{WHEN \allowbreak{}((( \allowbreak{}\ldots{} \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}\ldots{} \allowbreak{}))) \allowbreak{}(100 \allowbreak{}niveles) \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & ACEPTA & ACEPTA $\checkmark$ & 100 niveles de paréntesis \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: humedad \textless{} 30} \\
+\hline
+L12 & \texttt{WHEN \allowbreak{}s0 \allowbreak{}\textgreater{} \allowbreak{}0 \allowbreak{}AND \allowbreak{}s1 \allowbreak{}\textgreater{} \allowbreak{}1 \allowbreak{}AND \allowbreak{}\ldots{} \allowbreak{}AND \allowbreak{}s499 \allowbreak{}\textgreater{} \allowbreak{}499 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & ACEPTA & ACEPTA $\checkmark$ & 500 comparaciones unidas por 499 AND \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND(\allowbreak{}AND\ldots{}} \\
+\hline
+L13 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;\textbackslash{}r\textbackslash{}n \allowbreak{}repetida \allowbreak{}1000 \allowbreak{}veces} & ACEPTA & ACEPTA $\checkmark$ & 1000 reglas con fin de línea CRLF \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1000 reglas,\allowbreak{} 1000 acciones; 1.\textordfeminine{} condición: humedad \textless{} 30} \\
+\hline
+L14 & \texttt{WHEN\textbackslash{}thumedad\textbackslash{}n\textless{}\textbackslash{}n30\textbackslash{}nTHEN \allowbreak{}regar\textbackslash{}tsector\_\allowbreak{}sur;} & ACEPTA & ACEPTA $\checkmark$ & Tabulaciones y saltos de línea entre tokens \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: humedad \textless{} 30} \\
+\hline
+L15 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}-1 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (léxi., 1:16) & RECHAZA (léxi., 1:16) $\checkmark$ & Número negativo \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: símbolo no reconocido \textquotesingle{}-\textquotesingle{}. Los números son enteros sin signo.} \\
+\hline
+L16 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}1.5 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (léxi., 1:17) & RECHAZA (léxi., 1:17) $\checkmark$ & Número decimal \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: símbolo no reconocido \textquotesingle{}.\textquotesingle{}. Solo se admiten números enteros (\allowbreak{}sin punto decimal).} \\
+\hline
+L17 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30abc \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (sint., 1:18) & RECHAZA (sint., 1:18) $\checkmark$ & \textquotesingle{}30abc\textquotesingle{} se separa en NUM e ID \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba THEN,\allowbreak{} AND u OR después del número 30,\allowbreak{} pero se encontró el identificador \textquotesingle{}abc\textquotesingle{}.} \\
+\hline
+L18 & \texttt{WHEN \allowbreak{}año \allowbreak{}\textgreater{} \allowbreak{}1 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (léxi., 1:7) & RECHAZA (léxi., 1:7) $\checkmark$ & Letra \textquotesingle{}ñ\textquotesingle{} fuera del alfabeto \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: símbolo no reconocido \textquotesingle{}ñ\textquotesingle{}. Los identificadores solo admiten letras ASCII (\allowbreak{}sin tildes ni ñ),\allowbreak{} dígitos y \textquotesingle{}\_\textquotesingle{}.} \\
+\hline
+L19 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;\textbackslash{}nWHEN \allowbreak{}viento \allowbreak{}\textgreater{} \allowbreak{}THEN \allowbreak{}cerrar \allowbreak{}compuertas;} & RECHAZA (sint., 2:15) & RECHAZA (sint., 2:15) $\checkmark$ & Error en la segunda línea \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba un valor (\allowbreak{}número entero,\allowbreak{} TRUE o FALSE) después del operador \textquotesingle{}\textgreater{}\textquotesingle{},\allowbreak{} pero se encontró la palabra reservada THEN.} \\
+\hline
+L20 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}\textlangle{}U+0663\textrangle{} \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (léxi., 1:16) & RECHAZA (léxi., 1:16) $\checkmark$ & Dígito no ASCII (modificación M5) \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: símbolo no reconocido \textquotesingle{}\textlangle{}U+0663\textrangle{}\textquotesingle{}. Solo se admiten los dígitos ASCII 0-9.} \\
+\hline
+L21 & \texttt{WHEN \allowbreak{}lluvia \allowbreak{}\textgreater{} \allowbreak{}TRUE \allowbreak{}THEN \allowbreak{}encender \allowbreak{}lluvia \allowbreak{}DURING \allowbreak{}0;} & ACEPTA & ACEPTA $\checkmark$ & Sintaxis válida aunque sin sentido: no hay análisis semántico \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: lluvia \textgreater{} TRUE} \\
+\hline

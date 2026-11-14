@@ -1,0 +1,2 @@
+WHEN nivel_tanque <= 10 THEN detener bomba_pozo;
+WHEN nivel_tanque >= 90 AND lluvia != TRUE THEN activar bomba_pozo DURING 45;

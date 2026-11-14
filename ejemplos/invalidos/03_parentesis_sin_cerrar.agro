@@ -1,0 +1,2 @@
+WHEN (humedad < 30 OR lluvia == FALSE
+THEN regar sector_sur;

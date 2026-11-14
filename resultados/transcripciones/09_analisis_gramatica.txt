@@ -1,0 +1,90 @@
+$ python3 -m agroreglas --analisis
+Gramática G2 (final): S = Programa; |N| = 14, |T| = 14, |P| = 23
+  ( 1) Programa → Regla Resto
+  ( 2) Resto → Regla Resto
+  ( 3) Resto → ε
+  ( 4) Regla → WHEN Condicion THEN Acciones PUNTO_COMA
+  ( 5) Condicion → Conjuncion ColaOr
+  ( 6) ColaOr → OR Conjuncion ColaOr
+  ( 7) ColaOr → ε
+  ( 8) Conjuncion → Factor ColaAnd
+  ( 9) ColaAnd → AND Factor ColaAnd
+  (10) ColaAnd → ε
+  (11) Factor → NOT Factor
+  (12) Factor → PARENT_IZQ Condicion PARENT_DER
+  (13) Factor → Comparacion
+  (14) Comparacion → ID OP_REL Valor
+  (15) Valor → NUM
+  (16) Valor → TRUE
+  (17) Valor → FALSE
+  (18) Acciones → Accion ColaAcciones
+  (19) ColaAcciones → AND Accion ColaAcciones
+  (20) ColaAcciones → ε
+  (21) Accion → ID ID Duracion
+  (22) Duracion → DURING NUM
+  (23) Duracion → ε
+
+Anulables: {Resto, ColaOr, ColaAnd, ColaAcciones, Duracion}
+
+FIRST y FOLLOW:
+  Programa      FIRST = {WHEN}  FOLLOW = {EOF}
+  Resto         FIRST = {WHEN, ε}  FOLLOW = {EOF}
+  Regla         FIRST = {WHEN}  FOLLOW = {WHEN, EOF}
+  Condicion     FIRST = {ID, NOT, PARENT_IZQ}  FOLLOW = {THEN, PARENT_DER}
+  ColaOr        FIRST = {OR, ε}  FOLLOW = {THEN, PARENT_DER}
+  Conjuncion    FIRST = {ID, NOT, PARENT_IZQ}  FOLLOW = {THEN, OR, PARENT_DER}
+  ColaAnd       FIRST = {AND, ε}  FOLLOW = {THEN, OR, PARENT_DER}
+  Factor        FIRST = {ID, NOT, PARENT_IZQ}  FOLLOW = {THEN, AND, OR, PARENT_DER}
+  Comparacion   FIRST = {ID}  FOLLOW = {THEN, AND, OR, PARENT_DER}
+  Valor         FIRST = {NUM, TRUE, FALSE}  FOLLOW = {THEN, AND, OR, PARENT_DER}
+  Acciones      FIRST = {ID}  FOLLOW = {PUNTO_COMA}
+  ColaAcciones  FIRST = {AND, ε}  FOLLOW = {PUNTO_COMA}
+  Accion        FIRST = {ID}  FOLLOW = {AND, PUNTO_COMA}
+  Duracion      FIRST = {DURING, ε}  FOLLOW = {AND, PUNTO_COMA}
+
+Conjuntos de selección:
+  ( 1) SELECT = {WHEN}
+  ( 2) SELECT = {WHEN}
+  ( 3) SELECT = {EOF}
+  ( 4) SELECT = {WHEN}
+  ( 5) SELECT = {ID, NOT, PARENT_IZQ}
+  ( 6) SELECT = {OR}
+  ( 7) SELECT = {THEN, PARENT_DER}
+  ( 8) SELECT = {ID, NOT, PARENT_IZQ}
+  ( 9) SELECT = {AND}
+  (10) SELECT = {THEN, OR, PARENT_DER}
+  (11) SELECT = {NOT}
+  (12) SELECT = {PARENT_IZQ}
+  (13) SELECT = {ID}
+  (14) SELECT = {ID}
+  (15) SELECT = {NUM}
+  (16) SELECT = {TRUE}
+  (17) SELECT = {FALSE}
+  (18) SELECT = {ID}
+  (19) SELECT = {AND}
+  (20) SELECT = {PUNTO_COMA}
+  (21) SELECT = {ID}
+  (22) SELECT = {DURING}
+  (23) SELECT = {AND, PUNTO_COMA}
+
+Tabla LL(1): 31 celdas con producción; 179 celdas de error.
+  Programa      WHEN→1
+  Resto         WHEN→2, EOF→3
+  Regla         WHEN→4
+  Condicion     ID→5, NOT→5, PARENT_IZQ→5
+  ColaOr        THEN→7, OR→6, PARENT_DER→7
+  Conjuncion    ID→8, NOT→8, PARENT_IZQ→8
+  ColaAnd       THEN→10, AND→9, OR→10, PARENT_DER→10
+  Factor        ID→13, NOT→11, PARENT_IZQ→12
+  Comparacion   ID→14
+  Valor         NUM→15, TRUE→16, FALSE→17
+  Acciones      ID→18
+  ColaAcciones  AND→19, PUNTO_COMA→20
+  Accion        ID→21
+  Duracion      AND→23, DURING→22, PUNTO_COMA→23
+
+Recursión izquierda: ninguna
+Prefijos comunes: ninguno
+Conflictos: 0 -> la gramática es LL(1)
+$ echo $?
+0

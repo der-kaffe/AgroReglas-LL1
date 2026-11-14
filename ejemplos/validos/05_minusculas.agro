@@ -1,0 +1,1 @@
+when Humedad < 30 then Regar Sector_Sur during 5;

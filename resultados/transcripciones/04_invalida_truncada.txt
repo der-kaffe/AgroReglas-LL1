@@ -1,0 +1,9 @@
+$ python3 -m agroreglas ejemplos/invalidos/07_regla_truncada.agro
+RECHAZADA: ejemplos/invalidos/07_regla_truncada.agro
+Error sintáctico en línea 2, columna 40 (posición 80): se esperaba AND, DURING o ';' después de 'compuertas', pero se encontró el fin de la entrada (regla incompleta).
+  Esperados: AND, DURING, PUNTO_COMA
+  Cima de la pila: Duracion
+   2 | WHEN viento > 60 THEN cerrar compuertas
+     |                                        ^
+$ echo $?
+1

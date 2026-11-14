@@ -1,0 +1,10 @@
+$ python3 -m agroreglas ejemplos/invalidos/08_vacio.agro
+RECHAZADA: ejemplos/invalidos/08_vacio.agro
+Error sintáctico en línea 1, columna 1 (posición 0): la entrada está vacía: se esperaba al menos una
+    regla que comience con WHEN.
+  Esperados: WHEN
+  Cima de la pila: Programa
+   1 | 
+     | ^
+$ echo $?
+1

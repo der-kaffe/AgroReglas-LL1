@@ -1,0 +1,48 @@
+V01 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}norte;} & ACEPTA & ACEPTA $\checkmark$ & Regla mínima: una comparación y una acción \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: humedad \textless{} 30} \\
+\hline
+V02 & \texttt{WHEN \allowbreak{}temperatura \allowbreak{}\textgreater{}= \allowbreak{}35 \allowbreak{}THEN \allowbreak{}abrir \allowbreak{}valvula\_\allowbreak{}1;} & ACEPTA & ACEPTA $\checkmark$ & Operador \textgreater{}= de dos caracteres \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: temperatura \textgreater{}= 35} \\
+\hline
+V03 & \texttt{WHEN \allowbreak{}lluvia \allowbreak{}== \allowbreak{}TRUE \allowbreak{}THEN \allowbreak{}cerrar \allowbreak{}valvula\_\allowbreak{}1;} & ACEPTA & ACEPTA $\checkmark$ & Valor booleano TRUE \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: lluvia == TRUE} \\
+\hline
+V04 & \texttt{WHEN \allowbreak{}lluvia \allowbreak{}!= \allowbreak{}FALSE \allowbreak{}THEN \allowbreak{}activar \allowbreak{}alarma;} & ACEPTA & ACEPTA $\checkmark$ & Operador != y valor FALSE \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: lluvia != FALSE} \\
+\hline
+V05 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{}= \allowbreak{}20 \allowbreak{}AND \allowbreak{}temperatura \allowbreak{}\textgreater{} \allowbreak{}25 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & ACEPTA & ACEPTA $\checkmark$ & Conjunción AND \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: AND(\allowbreak{}humedad \textless{}= 20,\allowbreak{} temperatura \textgreater{} 25)} \\
+\hline
+V06 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}20 \allowbreak{}OR \allowbreak{}temperatura \allowbreak{}\textgreater{} \allowbreak{}35 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & ACEPTA & ACEPTA $\checkmark$ & Disyunción OR \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: OR(\allowbreak{}humedad \textless{} 20,\allowbreak{} temperatura \textgreater{} 35)} \\
+\hline
+V07 & \texttt{WHEN \allowbreak{}NOT \allowbreak{}lluvia \allowbreak{}== \allowbreak{}TRUE \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & ACEPTA & ACEPTA $\checkmark$ & Negación de una comparación \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: NOT(\allowbreak{}lluvia == TRUE)} \\
+\hline
+V08 & \texttt{WHEN \allowbreak{}(humedad \allowbreak{}\textless{} \allowbreak{}20 \allowbreak{}OR \allowbreak{}temperatura \allowbreak{}\textgreater{} \allowbreak{}35) \allowbreak{}AND \allowbreak{}lluvia \allowbreak{}== \allowbreak{}FALSE \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & ACEPTA & ACEPTA $\checkmark$ & Paréntesis: el OR se agrupa antes que el AND \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: AND(\allowbreak{}OR(\allowbreak{}humedad \textless{} 20,\allowbreak{} temperatura \textgreater{} 35),\allowbreak{} lluvia == FALSE)} \\
+\hline
+V09 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur \allowbreak{}DURING \allowbreak{}10;} & ACEPTA & ACEPTA $\checkmark$ & Extensión DURING \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: humedad \textless{} 30} \\
+\hline
+V10 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur \allowbreak{}DURING \allowbreak{}10 \allowbreak{}AND \allowbreak{}activar \allowbreak{}bomba;} & ACEPTA & ACEPTA $\checkmark$ & Dos acciones; DURING solo en la primera \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 2 acciones; 1.\textordfeminine{} condición: humedad \textless{} 30} \\
+\hline
+V11 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}25 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}invernadero \allowbreak{}DURING \allowbreak{}20;\textbackslash{}nWHEN \allowbreak{}viento \allowbreak{}\textgreater{} \allowbreak{}60 \allowbreak{}THEN \allowbreak{}cerrar \allowbreak{}compuertas;} & ACEPTA & ACEPTA $\checkmark$ & Dos reglas en líneas distintas \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 2 reglas,\allowbreak{} 2 acciones; 1.\textordfeminine{} condición: humedad \textless{} 25} \\
+\hline
+V12 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}AND \allowbreak{}NOT \allowbreak{}(lluvia \allowbreak{}== \allowbreak{}TRUE \allowbreak{}OR \allowbreak{}viento \allowbreak{}\textgreater{} \allowbreak{}40)\textbackslash{}nTHEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}norte \allowbreak{}DURING \allowbreak{}15 \allowbreak{}AND \allowbreak{}activar \allowbreak{}alarma;} & ACEPTA & ACEPTA $\checkmark$ & Ejemplo del enunciado: NOT, paréntesis, OR, AND, DURING y dos acciones \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 2 acciones; 1.\textordfeminine{} condición: AND(\allowbreak{}humedad \textless{} 30,\allowbreak{} NOT(\allowbreak{}OR(\allowbreak{}lluvia == TRUE,\allowbreak{} viento \textgreater{} 40)))} \\
+\hline
+V13 & \texttt{when \allowbreak{}Lluvia \allowbreak{}== \allowbreak{}true \allowbreak{}then \allowbreak{}cerrar \allowbreak{}Valvula \allowbreak{}during \allowbreak{}2;} & ACEPTA & ACEPTA $\checkmark$ & Reservadas en minúsculas; los identificadores conservan su escritura \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: Lluvia == TRUE} \\
+\hline
+V14 & \texttt{WHEN \allowbreak{}radiacion \allowbreak{}\textgreater{} \allowbreak{}800 \allowbreak{}AND \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}40 \allowbreak{}THEN \allowbreak{}abrir \allowbreak{}valvula\_\allowbreak{}1 \allowbreak{}DURING \allowbreak{}5 \allowbreak{}AND \allowbreak{}abrir \allowbreak{}valvula\_\allowbreak{}2 \allowbreak{}DURING \allowbreak{}5 \allowbreak{}AND \allowbreak{}registrar \allowbreak{}evento;} & ACEPTA & ACEPTA $\checkmark$ & Tres acciones, dos con duración \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 3 acciones; 1.\textordfeminine{} condición: AND(\allowbreak{}radiacion \textgreater{} 800,\allowbreak{} humedad \textless{} 40)} \\
+\hline
+V15 & \texttt{WHEN \allowbreak{}NOT \allowbreak{}(humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}AND \allowbreak{}NOT \allowbreak{}lluvia \allowbreak{}== \allowbreak{}TRUE) \allowbreak{}OR \allowbreak{}nivel\_\allowbreak{}tanque \allowbreak{}\textless{}= \allowbreak{}10 \allowbreak{}THEN \allowbreak{}activar \allowbreak{}bomba\_\allowbreak{}pozo \allowbreak{}DURING \allowbreak{}30;} & ACEPTA & ACEPTA $\checkmark$ & NOT sobre un grupo, NOT anidado y OR posterior \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: OR(\allowbreak{}NOT(\allowbreak{}AND(\allowbreak{}humedad \textless{} 30,\allowbreak{} NOT(\allowbreak{}lluvia == TRUE))),\allowbreak{} nivel\_tanque \textless{}= 10)} \\
+\hline
+V16 & \texttt{WHEN \allowbreak{}viento \allowbreak{}\textgreater{} \allowbreak{}50 \allowbreak{}OR \allowbreak{}granizo \allowbreak{}== \allowbreak{}TRUE \allowbreak{}OR \allowbreak{}helada \allowbreak{}== \allowbreak{}TRUE \allowbreak{}THEN \allowbreak{}cerrar \allowbreak{}invernadero;} & ACEPTA & ACEPTA $\checkmark$ & OR repetido (asociatividad izquierda en el AST) \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}AST: 1 regla,\allowbreak{} 1 acción; 1.\textordfeminine{} condición: OR(\allowbreak{}OR(\allowbreak{}viento \textgreater{} 50,\allowbreak{} granizo == TRUE),\allowbreak{} helada == TRUE)} \\
+\hline

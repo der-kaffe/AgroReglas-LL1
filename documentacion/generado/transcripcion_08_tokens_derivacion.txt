@@ -1,0 +1,33 @@
+$ python3 -m agroreglas -e "WHEN humedad < 30 THEN regar sur DURING 15;" --tokens --derivacion
+Tokens (línea:columna  tipo  lexema):
+  1:1    WHEN        WHEN
+  1:6    ID          humedad
+  1:14   OP_REL      <
+  1:16   NUM         30
+  1:19   THEN        THEN
+  1:24   ID          regar
+  1:30   ID          sur
+  1:34   DURING      DURING
+  1:41   NUM         15
+  1:43   PUNTO_COMA  ;
+  1:44   EOF         
+ACEPTADA: <texto> es sintácticamente válida (1 regla, 1 acción, 10 tokens).
+
+Derivación por la izquierda (terminales como categorías de token):
+  Programa
+  ⇒ Regla Resto   [1]
+  ⇒ WHEN Condicion THEN Acciones PUNTO_COMA Resto   [4]
+  ⇒ WHEN Conjuncion ColaOr THEN Acciones PUNTO_COMA Resto   [5]
+  ⇒ WHEN Factor ColaAnd ColaOr THEN Acciones PUNTO_COMA Resto   [8]
+  ⇒ WHEN Comparacion ColaAnd ColaOr THEN Acciones PUNTO_COMA Resto   [13]
+  ⇒ WHEN ID OP_REL Valor ColaAnd ColaOr THEN Acciones PUNTO_COMA Resto   [14]
+  ⇒ WHEN ID OP_REL NUM ColaAnd ColaOr THEN Acciones PUNTO_COMA Resto   [15]
+  ⇒ WHEN ID OP_REL NUM ColaOr THEN Acciones PUNTO_COMA Resto   [10]
+  ⇒ WHEN ID OP_REL NUM THEN Acciones PUNTO_COMA Resto   [7]
+  ⇒ WHEN ID OP_REL NUM THEN Accion ColaAcciones PUNTO_COMA Resto   [18]
+  ⇒ WHEN ID OP_REL NUM THEN ID ID Duracion ColaAcciones PUNTO_COMA Resto   [21]
+  ⇒ WHEN ID OP_REL NUM THEN ID ID DURING NUM ColaAcciones PUNTO_COMA Resto   [22]
+  ⇒ WHEN ID OP_REL NUM THEN ID ID DURING NUM PUNTO_COMA Resto   [20]
+  ⇒ WHEN ID OP_REL NUM THEN ID ID DURING NUM PUNTO_COMA   [3]
+$ echo $?
+0

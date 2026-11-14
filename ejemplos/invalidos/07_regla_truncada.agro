@@ -1,0 +1,2 @@
+WHEN humedad < 30 THEN regar sector_sur;
+WHEN viento > 60 THEN cerrar compuertas

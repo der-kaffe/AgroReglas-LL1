@@ -1,0 +1,4 @@
+$ python3 -m agroreglas ejemplos/no_existe.agro
+Error de lectura: no existe el archivo 'ejemplos/no_existe.agro'.
+$ echo $?
+2

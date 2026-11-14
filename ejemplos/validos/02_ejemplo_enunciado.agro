@@ -1,0 +1,2 @@
+WHEN humedad < 30 AND NOT (lluvia == TRUE OR viento > 40)
+THEN regar sector_norte DURING 15 AND activar alarma;

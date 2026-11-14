@@ -1,0 +1,69 @@
+Entrada:
+WHEN humedad < 30 AND NOT (lluvia == TRUE OR viento > 40)
+THEN regar sector_norte DURING 15 AND activar alarma;
+
+Programa
+├── Regla
+│   ├── WHEN 'WHEN'
+│   ├── Condicion
+│   │   ├── Conjuncion
+│   │   │   ├── Factor
+│   │   │   │   └── Comparacion
+│   │   │   │       ├── ID 'humedad'
+│   │   │   │       ├── OP_REL '<'
+│   │   │   │       └── Valor
+│   │   │   │           └── NUM '30'
+│   │   │   └── ColaAnd
+│   │   │       ├── AND 'AND'
+│   │   │       ├── Factor
+│   │   │       │   ├── NOT 'NOT'
+│   │   │       │   └── Factor
+│   │   │       │       ├── PARENT_IZQ '('
+│   │   │       │       ├── Condicion
+│   │   │       │       │   ├── Conjuncion
+│   │   │       │       │   │   ├── Factor
+│   │   │       │       │   │   │   └── Comparacion
+│   │   │       │       │   │   │       ├── ID 'lluvia'
+│   │   │       │       │   │   │       ├── OP_REL '=='
+│   │   │       │       │   │   │       └── Valor
+│   │   │       │       │   │   │           └── TRUE 'TRUE'
+│   │   │       │       │   │   └── ColaAnd
+│   │   │       │       │   │       └── ε
+│   │   │       │       │   └── ColaOr
+│   │   │       │       │       ├── OR 'OR'
+│   │   │       │       │       ├── Conjuncion
+│   │   │       │       │       │   ├── Factor
+│   │   │       │       │       │   │   └── Comparacion
+│   │   │       │       │       │   │       ├── ID 'viento'
+│   │   │       │       │       │   │       ├── OP_REL '>'
+│   │   │       │       │       │   │       └── Valor
+│   │   │       │       │       │   │           └── NUM '40'
+│   │   │       │       │       │   └── ColaAnd
+│   │   │       │       │       │       └── ε
+│   │   │       │       │       └── ColaOr
+│   │   │       │       │           └── ε
+│   │   │       │       └── PARENT_DER ')'
+│   │   │       └── ColaAnd
+│   │   │           └── ε
+│   │   └── ColaOr
+│   │       └── ε
+│   ├── THEN 'THEN'
+│   ├── Acciones
+│   │   ├── Accion
+│   │   │   ├── ID 'regar'
+│   │   │   ├── ID 'sector_norte'
+│   │   │   └── Duracion
+│   │   │       ├── DURING 'DURING'
+│   │   │       └── NUM '15'
+│   │   └── ColaAcciones
+│   │       ├── AND 'AND'
+│   │       ├── Accion
+│   │       │   ├── ID 'activar'
+│   │       │   ├── ID 'alarma'
+│   │       │   └── Duracion
+│   │       │       └── ε
+│   │       └── ColaAcciones
+│   │           └── ε
+│   └── PUNTO_COMA ';'
+└── Resto
+    └── ε

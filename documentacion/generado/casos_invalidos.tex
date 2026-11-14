@@ -1,0 +1,66 @@
+I01 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (sint., 1:19) & RECHAZA (sint., 1:19) $\checkmark$ & Falta THEN \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba THEN,\allowbreak{} AND u OR después del número 30,\allowbreak{} pero se encontró el identificador \textquotesingle{}regar\textquotesingle{}.} \\
+\hline
+I02 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (sint., 1:16) & RECHAZA (sint., 1:16) $\checkmark$ & Falta el valor después del operador \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba un valor (\allowbreak{}número entero,\allowbreak{} TRUE o FALSE) después del operador \textquotesingle{}\textless{}\textquotesingle{},\allowbreak{} pero se encontró la palabra reservada THEN.} \\
+\hline
+I03 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (sint., 1:14) & RECHAZA (sint., 1:14) $\checkmark$ & Falta el operador relacional \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba un operador relacional (\allowbreak{}\textless{},\allowbreak{} \textless{}=,\allowbreak{} \textgreater{},\allowbreak{} \textgreater{}=,\allowbreak{} ==,\allowbreak{} !=) después de \textquotesingle{}humedad\textquotesingle{},\allowbreak{} pero se encontró el número 30.} \\
+\hline
+I04 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur} & RECHAZA (sint., 1:40) & RECHAZA (sint., 1:40) $\checkmark$ & Falta \textquotesingle{};\textquotesingle{} final \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba AND,\allowbreak{} DURING o \textquotesingle{};\textquotesingle{} después de \textquotesingle{}sector\_sur\textquotesingle{},\allowbreak{} pero se encontró el fin de la entrada (\allowbreak{}regla incompleta).} \\
+\hline
+I05 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar;} & RECHAZA (sint., 1:29) & RECHAZA (sint., 1:29) $\checkmark$ & Acción sin objetivo \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba el objetivo de la acción \textquotesingle{}regar\textquotesingle{} (\allowbreak{}un identificador) después de \textquotesingle{}regar\textquotesingle{},\allowbreak{} pero se encontró el símbolo \textquotesingle{};\textquotesingle{}.} \\
+\hline
+I06 & \texttt{WHEN \allowbreak{}(humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (sint., 1:20) & RECHAZA (sint., 1:20) $\checkmark$ & Paréntesis sin cerrar \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba AND,\allowbreak{} OR o \textquotesingle{})\textquotesingle{} después del número 30,\allowbreak{} pero se encontró la palabra reservada THEN. El \textquotesingle{}(\allowbreak{}\textquotesingle{} abierto en línea 1,\allowbreak{} columna 6 sigue sin cerrar.} \\
+\hline
+I07 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30) \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (sint., 1:18) & RECHAZA (sint., 1:18) $\checkmark$ & Paréntesis de cierre sin apertura \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: paréntesis de cierre \textquotesingle{})\textquotesingle{} sin \textquotesingle{}(\allowbreak{}\textquotesingle{} de apertura; se esperaba THEN,\allowbreak{} AND u OR después del número 30.} \\
+\hline
+I08 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}OR \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (sint., 1:22) & RECHAZA (sint., 1:22) $\checkmark$ & OR sin operando derecho \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba una condición (\allowbreak{}un sensor,\allowbreak{} NOT o \textquotesingle{}(\allowbreak{}\textquotesingle{}) después de OR,\allowbreak{} pero se encontró la palabra reservada THEN.} \\
+\hline
+I09 & \texttt{WHEN \allowbreak{}NOT \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (sint., 1:10) & RECHAZA (sint., 1:10) $\checkmark$ & NOT sin operando \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba una condición (\allowbreak{}un sensor,\allowbreak{} NOT o \textquotesingle{}(\allowbreak{}\textquotesingle{}) después de NOT,\allowbreak{} pero se encontró la palabra reservada THEN.} \\
+\hline
+I10 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur \allowbreak{}DURING \allowbreak{}TRUE;} & RECHAZA (sint., 1:48) & RECHAZA (sint., 1:48) $\checkmark$ & DURING con un booleano \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba la duración en minutos (\allowbreak{}un número entero) después de DURING,\allowbreak{} pero se encontró la palabra reservada TRUE.} \\
+\hline
+I11 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur \allowbreak{}DURING;} & RECHAZA (sint., 1:47) & RECHAZA (sint., 1:47) $\checkmark$ & DURING sin minutos \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba la duración en minutos (\allowbreak{}un número entero) después de DURING,\allowbreak{} pero se encontró el símbolo \textquotesingle{};\textquotesingle{}.} \\
+\hline
+I12 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur \allowbreak{}DURING \allowbreak{}10 \allowbreak{}DURING \allowbreak{}5;} & RECHAZA (sint., 1:51) & RECHAZA (sint., 1:51) $\checkmark$ & DURING repetido en una acción \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba AND o \textquotesingle{};\textquotesingle{} después del número 10,\allowbreak{} pero se encontró la palabra reservada DURING.} \\
+\hline
+I13 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}DURING \allowbreak{}10 \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (sint., 1:24) & RECHAZA (sint., 1:24) $\checkmark$ & DURING antes de la acción \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba el verbo de una acción (\allowbreak{}un identificador) después de THEN,\allowbreak{} pero se encontró la palabra reservada DURING.} \\
+\hline
+I14 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur \allowbreak{}AND;} & RECHAZA (sint., 1:44) & RECHAZA (sint., 1:44) $\checkmark$ & AND sin segunda acción \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba el verbo de una acción (\allowbreak{}un identificador) después de AND,\allowbreak{} pero se encontró el símbolo \textquotesingle{};\textquotesingle{}.} \\
+\hline
+I15 & \texttt{humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (sint., 1:1) & RECHAZA (sint., 1:1) $\checkmark$ & La regla no comienza con WHEN \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba WHEN al comienzo de la entrada,\allowbreak{} pero se encontró el identificador \textquotesingle{}humedad\textquotesingle{}.} \\
+\hline
+I16 & \texttt{WHEN \allowbreak{}30 \allowbreak{}\textgreater{} \allowbreak{}humedad \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (sint., 1:6) & RECHAZA (sint., 1:6) $\checkmark$ & Número a la izquierda de la comparación \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba una condición (\allowbreak{}un sensor,\allowbreak{} NOT o \textquotesingle{}(\allowbreak{}\textquotesingle{}) después de WHEN,\allowbreak{} pero se encontró el número 30.} \\
+\hline
+I17 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}sensor\_\allowbreak{}b \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (sint., 1:16) & RECHAZA (sint., 1:16) $\checkmark$ & Identificador como valor (excluido) \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba un valor (\allowbreak{}número entero,\allowbreak{} TRUE o FALSE) después del operador \textquotesingle{}\textless{}\textquotesingle{},\allowbreak{} pero se encontró el identificador \textquotesingle{}sensor\_b\textquotesingle{}.} \\
+\hline
+I18 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur \allowbreak{}WHEN \allowbreak{}lluvia \allowbreak{}== \allowbreak{}TRUE \allowbreak{}THEN \allowbreak{}cerrar \allowbreak{}valvula\_\allowbreak{}1;} & RECHAZA (sint., 1:41) & RECHAZA (sint., 1:41) $\checkmark$ & Falta \textquotesingle{};\textquotesingle{} entre dos reglas \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba AND,\allowbreak{} DURING o \textquotesingle{};\textquotesingle{} después de \textquotesingle{}sector\_sur\textquotesingle{},\allowbreak{} pero se encontró la palabra reservada WHEN.} \\
+\hline
+I19 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}= \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (léxi., 1:14) & RECHAZA (léxi., 1:14) $\checkmark$ & \textquotesingle{}=\textquotesingle{} en lugar de \textquotesingle{}==\textquotesingle{} \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: símbolo no reconocido \textquotesingle{}=\textquotesingle{}. ¿Quiso escribir \textquotesingle{}==\textquotesingle{}? El \textquotesingle{}=\textquotesingle{} aislado no es un operador de AgroReglas.} \\
+\hline
+I20 & \texttt{WHEN \allowbreak{}humedad \allowbreak{}\textless{} \allowbreak{}30 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur, \allowbreak{}activar \allowbreak{}bomba;} & RECHAZA (léxi., 1:40) & RECHAZA (léxi., 1:40) $\checkmark$ & Coma entre acciones \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: símbolo no reconocido \textquotesingle{},\allowbreak{}\textquotesingle{}. Las acciones se separan con AND,\allowbreak{} no con comas.} \\
+\hline
+I21 & \texttt{WHEN \allowbreak{}() \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (sint., 1:7) & RECHAZA (sint., 1:7) $\checkmark$ & Paréntesis vacíos \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba una condición (\allowbreak{}un sensor,\allowbreak{} NOT o \textquotesingle{}(\allowbreak{}\textquotesingle{}) después de \textquotesingle{}(\allowbreak{}\textquotesingle{},\allowbreak{} pero se encontró el símbolo \textquotesingle{})\textquotesingle{}.} \\
+\hline
+I22 & \texttt{WHEN \allowbreak{}when \allowbreak{}\textgreater{} \allowbreak{}1 \allowbreak{}THEN \allowbreak{}regar \allowbreak{}sector\_\allowbreak{}sur;} & RECHAZA (sint., 1:6) & RECHAZA (sint., 1:6) $\checkmark$ & Palabra reservada usada como sensor \\*
+\multicolumn{5}{p{\dimexpr\linewidth-2\tabcolsep\relax}}{\raggedright\footnotesize\color{gris}\hspace*{1.2em}Mensaje: se esperaba una condición (\allowbreak{}un sensor,\allowbreak{} NOT o \textquotesingle{}(\allowbreak{}\textquotesingle{}) después de WHEN,\allowbreak{} pero se encontró la palabra reservada WHEN (\allowbreak{}escrita \textquotesingle{}when\textquotesingle{}).} \\
+\hline

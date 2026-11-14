@@ -1,0 +1,17 @@
+Programa (1 regla)
+`-- Regla (línea 1)
+    +-- Condición
+    |   `-- AND
+    |       +-- humedad < 30
+    |       `-- NOT
+    |           `-- OR
+    |               +-- lluvia == TRUE
+    |               `-- viento > 40
+    `-- Acciones
+        +-- Acción
+        |   +-- verbo: regar
+        |   +-- objetivo: sector_norte
+        |   `-- DURING: 15 min
+        `-- Acción
+            +-- verbo: activar
+            `-- objetivo: alarma
